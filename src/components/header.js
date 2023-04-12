@@ -5,7 +5,7 @@ export default function Header() {
   const style = {
     mainNav: {
       marginLeft: "auto",
-      //marginRight: "auto",
+      marginRight: "0",
     },
     nav: {
       justifyContent: "center",

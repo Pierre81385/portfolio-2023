@@ -1,5 +1,5 @@
-import { Button, Container, Stack } from "react-bootstrap";
-import { useState } from "react";
+import { Button, Container, Image, Stack } from "react-bootstrap";
+import { useState, useRef } from "react";
 import CodeBW from "../assets/codeBW.png";
 import CodeInsta from "../assets/codeInsta.png";
 import CodeNight from "../assets/codeNIGHT.png";
@@ -9,6 +9,7 @@ import Header from "../components/header";
 
 export default function Work() {
   const [background, setBackground] = useState(CodeBW);
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const style = {
     backgroundImg: {
@@ -16,78 +17,74 @@ export default function Work() {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "contain",
-      height: "100vh",
-      width: "100vw",
+      minHeight: "100vh",
+      minWidth: "100%",
     },
     container: {
-      height: "100%",
-      width: "100vw",
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-    },
-    stack: {
+      height: "100vh",
       width: "100%",
-      marginTop: "41%",
-      marginLeft: "60%",
+    },
+    mainStack: {
+      height: "100vh",
+      width: "100%",
+    },
+    buttonStack: {
+      height: "100vh",
+      width: "100%",
+      paddingTop: "59.5vh",
+      paddingLeft: "12.5%",
     },
     button1: {
-      marginTop: "2%",
-      marginBottom: "2.5%",
-      marginLeft: "-33%",
-      width: "13vw",
-      height: "2.5vh",
+      width: "100%",
+      height: "2vh",
+      marginBottom: "3.6vh",
+      opacity: 0.0,
     },
     button2: {
-      marginTop: "2.5%",
-      marginBottom: "2.5%",
-      marginLeft: "-25%",
-      width: "15vw",
-      height: "2.5vh",
+      width: "100%",
+      height: "2vh",
+      marginBottom: "3.7vh",
+      opacity: 0.0,
     },
     button3: {
-      marginTop: "2.5%",
-      marginBottom: "2.5%",
-      marginLeft: "-17%",
-      width: "16vw",
-      height: "2.5vh",
+      width: "100%",
+      height: "2vh",
+      marginBottom: "3.7vh",
+      opacity: 0.0,
     },
     button4: {
-      marginTop: "2.5%",
-      marginBottom: "2%",
-      marginLeft: "-27%",
-      width: "12vw",
-      height: "2.5vh",
+      width: "100%",
+      height: "2vh",
+      opacity: 0.0,
     },
   };
 
   return (
-    <Container fluid style={style.backgroundImg}>
-      <Stack direction="verticle">
+    <Container style={style.backgroundImg}>
+      <Stack direction="verticle" style={style.mainStack}>
         <Header />
-
-        <Container sm={4} style={style.container}>
-          <Stack direction="verticle" style={style.stack}>
-            <Container
+        <Container style={style.container}>
+          <Stack direction="verticle" style={style.buttonStack}>
+            <Button
               onMouseEnter={() => setBackground(CodeSnif)}
               onMouseLeave={() => setBackground(CodeBW)}
               style={style.button1}
-            ></Container>
-            <Container
+            ></Button>
+            <Button
               onMouseEnter={() => setBackground(CodeInsta)}
               onMouseLeave={() => setBackground(CodeBW)}
               style={style.button2}
-            ></Container>
-            <Container
+            ></Button>
+            <Button
               onMouseEnter={() => setBackground(CodeNight)}
               onMouseLeave={() => setBackground(CodeBW)}
               style={style.button3}
-            ></Container>
-            <Container
+            ></Button>
+            <Button
               onMouseEnter={() => setBackground(CodePOS)}
               onMouseLeave={() => setBackground(CodeBW)}
               style={style.button4}
-            ></Container>
+            ></Button>
           </Stack>
         </Container>
       </Stack>

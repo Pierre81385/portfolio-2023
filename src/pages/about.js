@@ -10,8 +10,8 @@ export default function About() {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "contain",
-      height: "100vh",
-      width: "100vw",
+      minHeight: "100vh",
+      minWidth: "100%",
     },
     container: {
       height: "100%",
@@ -23,7 +23,7 @@ export default function About() {
   };
 
   return (
-    <Container fluid style={style.backgroundImg}>
+    <Container style={style.backgroundImg}>
       <Stack direction="vertical">
         <Header />
         <Container fluid style={style.container}>

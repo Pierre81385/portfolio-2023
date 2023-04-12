@@ -8,26 +8,26 @@ import Work from "./pages/work";
 import "./App.css";
 
 function App() {
-  const style = {
-    container: {
-      height: "100vh",
-      width: "100vw",
-      padding: "0",
-      margin: "0",
-    },
-  };
+  // const style = {
+  //   container: {
+  //     minHeight: "100%",
+  //     minWidth: "100%",
+  //     padding: "auto",
+  //     marginLeft: 0,
+  //     marginRight: 0,
+  //     justifyContent: "center",
+  //   },
+  // };
 
   return (
-    <Container fluid style={style.container}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Work />}></Route>
-          <Route path="/work" element={<Work />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-        </Routes>
-      </Router>
-    </Container>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Work />}></Route>
+        <Route path="/work" element={<Work />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
