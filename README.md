@@ -1,3 +1,8 @@
+### dependencies
+
+https://react-bootstrap.github.io/
+https://github.com/stephane-monnot/react-vertical-timeline
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

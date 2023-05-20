@@ -16,8 +16,11 @@ export default function Header() {
   };
 
   return (
-    <Navbar style={style.mainNav}>
+    <Navbar style={style.mainNav} sticky="top">
       <Nav className="me-auto" style={style.nav}>
+        <Nav.Link href="/" style={style.navLink}>
+          home
+        </Nav.Link>
         <Nav.Link href="/about" style={style.navLink}>
           about
         </Nav.Link>
