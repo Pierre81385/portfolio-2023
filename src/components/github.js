@@ -33,7 +33,7 @@ export default function GitHub() {
           GitStats();
         }}
       >
-        Send Task Request
+        Get Repo Stats
       </Button>
       {gitStats ? <pre>{JSON.stringify(gitStats, null, 2)}</pre> : "Loading..."}
     </Container>

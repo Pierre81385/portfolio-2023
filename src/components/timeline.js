@@ -1,6 +1,5 @@
 import { Container, Button } from "react-bootstrap";
 import { useState } from "react";
-import Header from "./header";
 import ClickUp from "../assets/clickup.png";
 import Foraged from "../assets/foraged.jpg";
 import Sushi from "../assets/sushi.png";
@@ -40,7 +39,7 @@ export default function Work() {
     },
     timelineContainer: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: "column",
       position: "relative",
       width: "100%",
       //margin: "40px 0",
@@ -178,13 +177,17 @@ export default function Work() {
       <Button
         style={{
           backgroundImage: `url(${data.logo})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
           backgroundColor: "white",
           borderColor: "black",
           border: "3px solid",
-          borderRadius: "100%",
+          //borderRadius: "100%",
           width: "100px",
           height: "100px",
+          zIndex: "100",
+          margin: "auto",
+          padding: "auto",
         }}
         onClick={() => {
           setShowContainer(true);
