@@ -1,5 +1,5 @@
-import { Container, Button } from "react-bootstrap";
-import { useState } from "react";
+import { Container, Button, Col, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import ClickUp from "../assets/clickup.png";
 import Foraged from "../assets/foraged.jpg";
 import Sushi from "../assets/sushi.png";
@@ -9,22 +9,22 @@ import DataConnect from "../assets/dataconnect.jpg";
 import Perenso from "../assets/perenso.png";
 
 export default function Work() {
-  const [showContianer, setShowContainer] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   const style = {
-    mainContainer: {
-      minHeight: "100vh",
-      minWidth: "100%",
-    },
-    timelineItem: {
-      display: showContianer ? "flex" : "none",
-      justifyContent: "flex-end",
-      //paddingRight: "30px",
-      position: "relative",
-      margin: "10px 0",
+    timeline: {
       width: "100%",
+      height: "100%",
+      flexDirection: "flex-row",
     },
-    timelineItemContent: {
+    timelineLogo: {
+      width: "100%",
+      height: "100%",
+    },
+    timelineContent: {
+      width: "100%",
+      height: "100%",
+      zIndex: "200",
       boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
       borderRadius: "5px",
       backgroundColor: "#fff",
@@ -32,47 +32,18 @@ export default function Work() {
       flexDirection: "column",
       alignItems: "flex-end",
       padding: "15px",
-      position: "relative",
-      width: "400px",
-      maxWidth: "70%",
-      textRlign: "right",
-    },
-    timelineContainer: {
-      display: "flex",
-      flexDirection: "column",
-      position: "relative",
-      width: "100%",
-      //margin: "40px 0",
-    },
-    circle: {
-      backgroundColor: "#fff",
-      border: "3px solid #e17b77",
-      borderRadius: "100%",
-      position: "absolute",
-      top: "calc(50% - 10px)",
-      left: "-120px",
-      width: "50px",
-      height: "50px",
-      zIndex: "100",
-    },
-    timelineContainerAfter: {
-      backgroundColor: "#e17b77",
-      content: "",
-      position: "absolute",
-      //left: "calc(50% - 2px)",
-      width: "4px",
-      height: "100%",
     },
   };
 
   const dataEntry = [
     {
-      text: "Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium",
-      date: "March 03 2017",
+      title: "Technical Support Specialist",
+      date: "June 06 2022",
+      description: "",
       logo: ClickUp,
       link: {
-        url: "https://medium.com/@popflorin1705/javascript-coding-challenge-1-6d9c712963d2",
-        text: "Read more",
+        url: "http://www.clickup.com",
+        text: "ClickUp",
       },
     },
     {
@@ -131,49 +102,8 @@ export default function Work() {
     },
   ];
 
-  const TimelineItem = ({ data }) => (
-    <Container>
-      <Container style={style.timelineItem}>
-        <Container style={style.timelineItemContent}>
-          <time>{data.date}</time>
-          <p>{data.text}</p>
-          {data.link && (
-            <a href={data.link.url} target="_blank" rel="noopener noreferrer">
-              {data.link.text}
-            </a>
-          )}
-          <Container
-            style={{
-              position: "absolute",
-              //top: "calc(50% - 10px)",
-              left: "-70px",
-              width: "50px",
-              height: "50px",
-              zIndex: "100",
-            }}
-          >
-            <p>hi</p>
-
-            {/* <Container
-            style={{
-              backgroundImage: `url(${data.logo})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              border: "1px solid",
-              borderRadius: "100%",
-              // position: "absolute",
-              // top: "calc(50% - 10px)",
-              // left: "-70px",
-              width: "50px",
-              height: "50px",
-              // zIndex: "100",
-            }}
-          ></Container> */}
-
-            <p>hi</p>
-          </Container>
-        </Container>
-      </Container>
+  const TimelineLogos = ({ data }) => (
+    <Container style={{ width: "100%", textAlign: "center" }}>
       <Button
         style={{
           backgroundImage: `url(${data.logo})`,
@@ -183,24 +113,31 @@ export default function Work() {
           borderColor: "black",
           border: "3px solid",
           //borderRadius: "100%",
-          width: "100px",
+          width: "200px",
           height: "100px",
           zIndex: "100",
           margin: "auto",
           padding: "auto",
         }}
-        onClick={() => {
-          setShowContainer(true);
-        }}
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
+        id="timelineLogo"
       ></Button>
     </Container>
   );
 
+  const TimelineText = ({ data }) => (
+    <Col id="timelineText">
+      <Row>{data.date}</Row>
+      <Row>{data.text}</Row>
+    </Col>
+  );
+
   const Timeline = () =>
     dataEntry.length > 0 && (
-      <Container style={style.timelineContainer} className="overflow-auto">
+      <Container fluid id="timelineContainer">
         {dataEntry.map((data, idx) => (
-          <TimelineItem data={data} key={idx} />
+          <TimelineLogos data={data} key={idx} id="timelineLogoContainer" />
         ))}
       </Container>
     );
