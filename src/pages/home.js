@@ -15,9 +15,9 @@ export default function HomePage() {
   const [hoveringInst, setHoveringInst] = useState("7vh");
   const [hoveringGit, setHoveringGit] = useState("5.5vh");
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  // };
 
   const style = {
     imageContainer: {
