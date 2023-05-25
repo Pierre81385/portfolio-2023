@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Me from "../assets/me.png";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -22,7 +22,7 @@ export default function HomePage() {
   const style = {
     imageContainer: {
       backgroundAttachment: "fixed",
-      backgroundImage: index != 0 ? null : `url(${Me})`,
+      backgroundImage: index !== 0 ? null : `url(${Me})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "contain",
