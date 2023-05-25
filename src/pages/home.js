@@ -13,7 +13,7 @@ export default function HomePage() {
   const [hoveringFb, setHoveringFb] = useState("7vh");
   const [hoveringLk, setHoveringLk] = useState("7vh");
   const [hoveringInst, setHoveringInst] = useState("7vh");
-  const [hoveringGit, setHoveringGit] = useState("5.5vh");
+  const [hoveringGit, setHoveringGit] = useState("7vh");
 
   // const handleSelect = (selectedIndex, e) => {
   //   setIndex(selectedIndex);
@@ -22,27 +22,24 @@ export default function HomePage() {
   const style = {
     imageContainer: {
       backgroundAttachment: "fixed",
-      backgroundImage: `url(${Me})`,
+      backgroundImage: index != 0 ? null : `url(${Me})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "contain",
       minHeight: "100vh",
       minWidth: "100%",
       padding: "0",
-      //zIndex: "1",
       position: "relative",
     },
     backContainer: {
       minHeight: "100vh",
       minWidth: "100%",
       padding: "0",
-      //zIndex: "-1",
-      position: "fixed",
+      position: index === 2 ? "relative" : "fixed",
     },
     carousel: {
-      minHeight: "100vh",
+      minHeight: index === 2 ? "200vh" : "100vh",
       minWidth: "100%",
-      //zIndex: "0",
       position: "absolute",
       marginTop: "15vh",
     },
@@ -71,7 +68,7 @@ export default function HomePage() {
       margin: "0",
       padding: "0",
       height: "10vh",
-      backgroundColor: "black",
+      backgroundColor: "transparent",
     },
     nav: {
       justifyContent: "center",
@@ -90,13 +87,13 @@ export default function HomePage() {
         controls={false}
       >
         <Carousel.Item id="home" style={style.carouselItem}>
-          <Row>
+          <Row style={{ height: "100vh" }}>
             <Col md={4} id="leftSlideContainer">
               <Container>
                 <h7>"He does computery stuff."</h7>
                 <h5>- Christine L.</h5>
               </Container>
-              <Container style={{ padding: "50px" }}>
+              <Container style={{ paddingTop: "20px", paddingLeft: "40px" }}>
                 <h3>
                   "Peter is a highly intelligent and motivated person. He is a
                   well-organized professional, genuinely interested in improving
@@ -106,28 +103,29 @@ export default function HomePage() {
                   and for any high-level role."
                 </h3>
                 <h5>- Gabrielle M.</h5>
-                <h7>Senior Program Specialist at HoneywellSenior</h7>
+                <h5>Senior Program Specialist, HoneywellSenior</h5>
               </Container>
               <Container>
-                <h7>"One of the best asian bartenders in Colorado."</h7>
+                <h3>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</h3>
+                <h5>- Customer Satisfaction Review</h5>
+              </Container>
+              <Container>
+                <h3>"One of the best asian bartenders I've ever met."</h3>
                 <h5>- Unknown</h5>
               </Container>
             </Col>
             <Col md={4}>{/* do not use */}</Col>
             <Col md={4} id="rightSlideContainer">
               <Container>
-                <Card style={style.card}>
-                  <h1>PETER J BISHOP</h1>
-                  <h5>
-                    Driven Web Developer dedicated to continuous learning and
-                    crafting innovative, functional, and visually appealing
-                    applications. With a passion for keeping up with the latest
-                    industry trends, I am committed to expanding my skill set to
-                    deliver exceptional user experiences. I am committed to
-                    creating seamless and intuitive experiences that leave a
-                    lasting impression.
-                  </h5>
-                </Card>
+                <h1>- PETER J BISHOP</h1>
+                <h5>
+                  Combining a passion for continuous learning with a keen
+                  interest in application development and UX design, I am eager
+                  to contribute to a dynamic team and cultivate my expertise.
+                  Seeking a growth-oriented position to further expand my
+                  knowledge and skills in a stimulating professional
+                  environment.
+                </h5>
               </Container>
             </Col>
           </Row>
@@ -164,43 +162,57 @@ export default function HomePage() {
           <Nav className="me-auto" style={style.nav}>
             <Button
               variant="link"
-              value="home"
+              value="about"
               onClick={() => {
                 setIndex(0);
               }}
               style={{
                 textDecoration: index === 0 ? "underline" : "none",
-                color: index === 0 ? "white" : "grey",
+                color: index === 0 ? "black" : "grey",
               }}
             >
-              home
+              about
             </Button>
             <Button
               variant="link"
-              value="about"
+              value="home"
               onClick={() => {
                 setIndex(1);
               }}
               style={{
                 textDecoration: index === 1 ? "underline" : "none",
-                color: index === 1 ? "white" : "grey",
+                color: index === 1 ? "black" : "grey",
               }}
             >
-              about
+              home
             </Button>
 
             <Button
               variant="link"
               value="work"
               onClick={() => {
-                setIndex(3);
+                setIndex(2);
               }}
               style={{
-                textDecoration: index === 3 ? "underline" : "none",
-                color: index === 3 ? "white" : "grey",
+                textDecoration: index === 2 ? "underline" : "none",
+                color: index === 2 ? "black" : "grey",
               }}
             >
               work
+            </Button>
+
+            <Button
+              variant="link"
+              value="work"
+              onClick={() => {
+                setIndex(2);
+              }}
+              style={{
+                textDecoration: index === 3 ? "underline" : "none",
+                color: index === 3 ? "black" : "grey",
+              }}
+            >
+              contact
             </Button>
           </Nav>
           <Row style={{ height: "100%", marginRight: "20px" }}>
@@ -213,7 +225,8 @@ export default function HomePage() {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "transparent",
-                borderColor: "black",
+                borderColor: "transparent",
+
                 margin: "auto",
               }}
               onMouseEnter={() => setHoveringFb("8vh")}
@@ -228,7 +241,8 @@ export default function HomePage() {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "transparent",
-                borderColor: "black",
+                borderColor: "transparent",
+
                 margin: "auto",
               }}
               onMouseEnter={() => setHoveringInst("8vh")}
@@ -244,11 +258,12 @@ export default function HomePage() {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "transparent",
-                borderColor: "black",
+                borderColor: "transparent",
+
                 margin: "auto",
               }}
-              onMouseEnter={() => setHoveringGit("7vh")}
-              onMouseLeave={() => setHoveringGit("5.5vh")}
+              onMouseEnter={() => setHoveringGit("8vh")}
+              onMouseLeave={() => setHoveringGit("7vh")}
             ></Button>
             <Button
               href="https://www.linkedin.com/in/peter-bishop-46a51597/"
@@ -259,7 +274,7 @@ export default function HomePage() {
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "transparent",
-                borderColor: "black",
+                borderColor: "transparent",
                 margin: "auto",
               }}
               onMouseEnter={() => setHoveringLk("8vh")}
