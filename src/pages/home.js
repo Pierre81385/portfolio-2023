@@ -1,4 +1,4 @@
-import { Container, Row, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Me from "../assets/me.png";
 import Navbar from "react-bootstrap/Navbar";
@@ -64,6 +64,7 @@ export default function HomePage() {
       padding: "0",
       height: "10vh",
       backgroundColor: "transparent",
+      flexWrap: "wrap",
     },
     nav: {
       justifyContent: "center",
@@ -81,126 +82,133 @@ export default function HomePage() {
         id="headerNavBar"
         variant="light"
       >
-        <Nav className="me-auto" style={style.nav}>
-          <Button
-            variant="link"
-            value="home"
-            onClick={() => {
-              setIndex(0);
-            }}
-            style={{
-              textDecoration: index === 0 ? "underline" : "none",
-              color: index === 0 ? "black" : "grey",
-            }}
-          >
-            peter bishop
-          </Button>
-          <h1>|</h1>
-          <Button
-            variant="link"
-            value="about"
-            onClick={() => {
-              setIndex(1);
-            }}
-            style={{
-              textDecoration: index === 1 ? "underline" : "none",
-              color: index === 1 ? "black" : "grey",
-            }}
-          >
-            about
-          </Button>
+        <Col md={12}>
+          <Nav className="me-auto" style={style.nav} as="row">
+            <Button
+              variant="link"
+              value="home"
+              onClick={() => {
+                setIndex(0);
+              }}
+              style={{
+                textDecoration: index === 0 ? "underline" : "none",
+                color: index === 0 ? "black" : "grey",
+              }}
+            >
+              peter bishop
+            </Button>
+            <h1>|</h1>
+            <Button
+              variant="link"
+              value="about"
+              onClick={() => {
+                setIndex(1);
+              }}
+              style={{
+                textDecoration: index === 1 ? "underline" : "none",
+                color: index === 1 ? "black" : "grey",
+              }}
+            >
+              about
+            </Button>
 
-          <Button
-            variant="link"
-            value="work"
-            onClick={() => {
-              setIndex(2);
-            }}
-            style={{
-              textDecoration: index === 2 ? "underline" : "none",
-              color: index === 2 ? "black" : "grey",
-            }}
-          >
-            work
-          </Button>
+            <Button
+              variant="link"
+              value="work"
+              onClick={() => {
+                setIndex(2);
+              }}
+              style={{
+                textDecoration: index === 2 ? "underline" : "none",
+                color: index === 2 ? "black" : "grey",
+              }}
+            >
+              work
+            </Button>
 
-          <Button
-            variant="link"
-            value="work"
-            onClick={() => {
-              setIndex(3);
-            }}
-            style={{
-              textDecoration: index === 3 ? "underline" : "none",
-              color: index === 3 ? "black" : "grey",
-            }}
-          >
-            contact
-          </Button>
-        </Nav>
-        <Row style={{ marginRight: "1%" }}>
-          <Button
-            href="https://www.facebook.com/PeterJBishop"
-            style={{
-              height: hoveringFb,
-              width: hoveringFb,
-              backgroundImage: `url(${FacebookLogo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-              margin: "auto",
-            }}
-            onMouseEnter={() => setHoveringFb("6vh")}
-            onMouseLeave={() => setHoveringFb("5vh")}
-          ></Button>
-          <Button
-            href="https://www.instagram.com/pjb.den/"
-            style={{
-              height: hoveringInst,
-              width: hoveringInst,
-              backgroundImage: `url(${InstagramLogo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-              margin: "auto",
-            }}
-            onMouseEnter={() => setHoveringInst("6vh")}
-            onMouseLeave={() => setHoveringInst("5vh")}
-          ></Button>
-          <Button
-            href="https://github.com/Pierre81385"
-            style={{
-              height: hoveringGit,
-              width: hoveringGit,
-              marginTop: "1vh",
-              backgroundImage: `url(${GitHubLogo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-              margin: "auto",
-            }}
-            onMouseEnter={() => setHoveringGit("6vh")}
-            onMouseLeave={() => setHoveringGit("5vh")}
-          ></Button>
-          <Button
-            href="https://www.linkedin.com/in/peter-bishop-46a51597/"
-            style={{
-              height: hoveringLk,
-              width: hoveringLk,
-              backgroundImage: `url(${LinkedInLogo})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-              margin: "auto",
-            }}
-            onMouseEnter={() => setHoveringLk("6vh")}
-            onMouseLeave={() => setHoveringLk("5vh")}
-          ></Button>
-        </Row>
+            <Button
+              variant="link"
+              value="work"
+              onClick={() => {
+                setIndex(3);
+              }}
+              style={{
+                textDecoration: index === 3 ? "underline" : "none",
+                color: index === 3 ? "black" : "grey",
+              }}
+            >
+              contact
+            </Button>
+          </Nav>
+        </Col>
+        <Col md={12}>
+          <Row style={{ justifyContent: "center", height: "10vh" }}>
+            <Button
+              href="https://www.facebook.com/PeterJBishop"
+              style={{
+                height: hoveringFb,
+                width: hoveringFb,
+                backgroundImage: `url(${FacebookLogo})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+                marginLeft: ".5vw",
+                marginRight: ".5vw",
+              }}
+              onMouseEnter={() => setHoveringFb("6vh")}
+              onMouseLeave={() => setHoveringFb("5vh")}
+            ></Button>
+            <Button
+              href="https://www.instagram.com/pjb.den/"
+              style={{
+                height: hoveringInst,
+                width: hoveringInst,
+                backgroundImage: `url(${InstagramLogo})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+                marginLeft: ".5vw",
+                marginRight: ".5vw",
+              }}
+              onMouseEnter={() => setHoveringInst("6vh")}
+              onMouseLeave={() => setHoveringInst("5vh")}
+            ></Button>
+            <Button
+              href="https://github.com/Pierre81385"
+              style={{
+                height: hoveringGit,
+                width: hoveringGit,
+                backgroundImage: `url(${GitHubLogo})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+                marginLeft: ".5vw",
+                marginRight: ".5vw",
+              }}
+              onMouseEnter={() => setHoveringGit("6vh")}
+              onMouseLeave={() => setHoveringGit("5vh")}
+            ></Button>
+            <Button
+              href="https://www.linkedin.com/in/peter-bishop-46a51597/"
+              style={{
+                height: hoveringLk,
+                width: hoveringLk,
+                backgroundImage: `url(${LinkedInLogo})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+                marginLeft: ".5vw",
+                marginRight: ".5vw",
+              }}
+              onMouseEnter={() => setHoveringLk("6vh")}
+              onMouseLeave={() => setHoveringLk("5vh")}
+            ></Button>
+          </Row>
+        </Col>
       </Navbar>
       <Carousel
         activeIndex={index}
