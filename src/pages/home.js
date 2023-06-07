@@ -1,14 +1,15 @@
 import { Container, Row, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import Me from "../assets/me.png";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import FacebookLogo from "../assets/face.png";
 import InstagramLogo from "../assets/insta.png";
 import LinkedInLogo from "../assets/linkd.png";
 import GitHubLogo from "../assets/git.png";
 import About from "../pages/about";
+import Work from "../pages/work";
 
 export default function HomePage() {
   const [index, setIndex] = useState(0);
@@ -16,10 +17,16 @@ export default function HomePage() {
   const [hoveringLk, setHoveringLk] = useState("5vh");
   const [hoveringInst, setHoveringInst] = useState("5vh");
   const [hoveringGit, setHoveringGit] = useState("5vh");
-
-  // const handleSelect = (selectedIndex, e) => {
-  //   setIndex(selectedIndex);
-  // };
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   const style = {
     imageContainer: {
@@ -27,9 +34,9 @@ export default function HomePage() {
       backgroundImage: `url(${Me})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundSize: "contain",
-      minHeight: "100vh",
-      minWidth: "100%",
+      backgroundSize: width <= 700 ? "cover" : "contain",
+      minHeight: height,
+      minWidth: width,
       padding: "0",
       position: "relative",
       //
@@ -38,28 +45,20 @@ export default function HomePage() {
       minHeight: "100vh",
       minWidth: "100%",
       padding: "0",
-      position: index === 2 ? "relative" : "fixed",
+      position: index === 1 ? "relative" : "fixed",
       //
     },
     carousel: {
-      minHeight: index === 2 ? "200vh" : "100vh",
+      minHeight: index === 1 ? "200vh" : "100vh",
       minWidth: "100%",
       position: "absolute",
       zIndex: "100",
     },
     carouselItem: {
       minHeight: "100vh",
-      minWidth: "100%",
+      width: "100vw",
       //
     },
-    // card: {
-    //   margin: "15px",
-    //   padding: "25px",
-    //   boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
-    //   borderRadius: "15px",
-    //   backgroundColor: "#fff",
-    // },
-
     mainNav: {
       margin: "0",
       padding: "0",
@@ -85,7 +84,7 @@ export default function HomePage() {
         <Nav className="me-auto" style={style.nav}>
           <Button
             variant="link"
-            value="about"
+            value="home"
             onClick={() => {
               setIndex(0);
             }}
@@ -94,12 +93,12 @@ export default function HomePage() {
               color: index === 0 ? "black" : "grey",
             }}
           >
-            about
+            peter bishop
           </Button>
           <h1>|</h1>
           <Button
             variant="link"
-            value="home"
+            value="about"
             onClick={() => {
               setIndex(1);
             }}
@@ -108,7 +107,7 @@ export default function HomePage() {
               color: index === 1 ? "black" : "grey",
             }}
           >
-            home
+            about
           </Button>
 
           <Button
@@ -209,16 +208,15 @@ export default function HomePage() {
         indicators={false}
         controls={false}
       >
-        <Carousel.Item id="home" style={style.imageContainer}>
+        <Carousel.Item id="home" style={style.imageContainer}></Carousel.Item>
+        <Carousel.Item id="about" style={style.carouselItem}>
           <About />
         </Carousel.Item>
-        {/* <Container
-          style={style.imageContainer}
-          id="backgroundImageContainer"
-        ></Container> */}
-        <Carousel.Item id="about" style={style.carouselItem}></Carousel.Item>
+        <Carousel.Item id="work" style={style.carouselItem}>
+          <Work />
+        </Carousel.Item>
+
         <Carousel.Item id="contact" style={style.carouselItem}></Carousel.Item>
-        <Carousel.Item id="work" style={style.carouselItem}></Carousel.Item>
       </Carousel>
     </Container>
   );
