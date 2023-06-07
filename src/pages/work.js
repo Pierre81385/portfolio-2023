@@ -37,10 +37,34 @@ export default function Work() {
       subtitle: "June 2022 - Present",
       description: "job description",
     },
-    { logo: Foraged, company: "", position: "", subtitle: "", description: "" },
-    { logo: DU, company: "", position: "", subtitle: "", description: "" },
-    { logo: MHS, company: "", position: "", subtitle: "", description: "" },
-    { logo: Baruch, company: "", position: "", subtitle: "", description: "" },
+    {
+      logo: Foraged,
+      company: "For[a]ged",
+      position: "Bartender",
+      subtitle: "",
+      description: "",
+    },
+    {
+      logo: DU,
+      company: "University of Denver",
+      position: "Student",
+      subtitle: "",
+      description: "",
+    },
+    {
+      logo: MHS,
+      company: "Mile High Spirits Distilery",
+      position: "Bartender/Distilery Production/Educator",
+      subtitle: "",
+      description: "",
+    },
+    {
+      logo: Baruch,
+      company: "CUNY Baruch College",
+      position: "Student",
+      subtitle: "",
+      description: "",
+    },
   ];
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
@@ -62,19 +86,15 @@ export default function Work() {
               style={{
                 flexShrink: 0,
                 width: width * 0.75,
-                height: height * 0.6,
+                height: height * 0.8,
                 borderRadius: "10px",
                 marginLeft: "10px",
                 marginTop: "20px",
                 marginBottome: "20px",
-                // backgroundSize: "contain",
-                // backgroundRepeat: "no-repeat",
-                // backgroundPosition: "center center",
-                // backgroundImage: `url(${src.logo})`,
               }}
               onMouseEnter={() => {
                 setDisplay("block");
-                setBlur("10px");
+                setBlur("30px");
               }}
               onMouseLeave={() => {
                 setDisplay("none");
@@ -98,16 +118,24 @@ export default function Work() {
                 <Container
                   style={{
                     display: display,
-                    width: "90%",
+                    width: "80%",
                     height: "90%",
                     borderRadius: "10px",
                     textAlign: "center",
-                    zIndex: "100",
                   }}
                 >
-                  <h1>{src.company}</h1>
-                  <h2>{src.subtitle}</h2>
-                  <h3>{src.position}</h3>
+                  <Card.Title>{src.company}</Card.Title>
+                  <Card.Subtitle>{src.subtitle}</Card.Subtitle>
+                  <Card.Subtitle>{src.position}</Card.Subtitle>
+                  <Card.Text
+                    style={{
+                      height: "80%",
+                      textAlign: "start",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  ></Card.Text>
                 </Container>
               </Card.ImgOverlay>
             </Card>
