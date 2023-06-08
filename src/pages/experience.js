@@ -7,7 +7,7 @@ import DU from "../assets/DU.png";
 import MHS from "../assets/mhs.png";
 import Baruch from "../assets/baruch.png";
 
-export default function Work() {
+export default function Experience() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   const [display, setDisplay] = useState("none");
@@ -35,14 +35,20 @@ export default function Work() {
       company: "ClickUp",
       position: "Technical Support Specialist, QA, API Subject Matter Expert",
       subtitle: "June 2022 - Present",
-      description: "job description",
+      description:
+        "Working with the Engineering and Development teams I work to quickly validate bugs reported by users through reproduction, analysis of tools like Chrome DevTools and DataDog, and by examining the underlying code or API to provide concise and detailed reports to address confirmed defects. As the API Subject Matter Expert I maintain a thorough knowledge of the ClickUp API, testing it with Postman or custom javascript applications.  I’ve also taken the initiative to develop a growing library of custom scripts to build automate testing and build out content via the API which I share with my team.  I also help teach new and current team members with subjects including Git, web hooks, API testing, and the best testing methodology for these features.  I assist the Q/A team in regression testing, investigating, and documenting defects to help ensure the best quality product reaches the end user whenever possible.  ",
+      skills:
+        "REST API, Webhooks, Javascript, HTML, CSS, Git (Github, Bitbucket, and GitLab)",
     },
     {
       logo: Foraged,
       company: "For[a]ged",
       position: "Bartender",
-      subtitle: "",
-      description: "",
+      subtitle: "March 2021 - June 2022",
+      description:
+        "At Foraged I produced craft coctails for guests in a fast paced, high volumn, upscale establishment.  I developed a thurough knowledge of classic cocktails, custom craft coctails, and an extensive list of beers, wines, sake, and spirits to ensure each customer was presented with a clear understanding of availible choices. ",
+      skills:
+        "Leadership, book keeping, mixology, customer satisfaction, relationship building",
     },
     {
       logo: DU,
@@ -50,6 +56,7 @@ export default function Work() {
       position: "Student",
       subtitle: "",
       description: "",
+      skills: "",
     },
     {
       logo: MHS,
@@ -57,6 +64,7 @@ export default function Work() {
       position: "Bartender/Distilery Production/Educator",
       subtitle: "",
       description: "",
+      skills: "",
     },
     {
       logo: Baruch,
@@ -64,6 +72,7 @@ export default function Work() {
       position: "Student",
       subtitle: "",
       description: "",
+      skills: "",
     },
   ];
   useEffect(() => {
@@ -125,8 +134,12 @@ export default function Work() {
                   }}
                 >
                   <Card.Title>{src.company}</Card.Title>
-                  <Card.Subtitle>{src.subtitle}</Card.Subtitle>
-                  <Card.Subtitle>{src.position}</Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {src.subtitle}
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {src.position}
+                  </Card.Subtitle>
                   <Card.Text
                     style={{
                       height: "80%",
@@ -135,7 +148,10 @@ export default function Work() {
                       justifyContent: "center",
                       alignItems: "center",
                     }}
-                  ></Card.Text>
+                  >
+                    {src.description}
+                  </Card.Text>
+                  <Card.Text>{src.skills}</Card.Text>
                 </Container>
               </Card.ImgOverlay>
             </Card>

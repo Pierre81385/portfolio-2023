@@ -9,7 +9,8 @@ import InstagramLogo from "../assets/insta.png";
 import LinkedInLogo from "../assets/linkd.png";
 import GitHubLogo from "../assets/git.png";
 import About from "../pages/about";
-import Work from "../pages/work";
+import Experience from "./experience";
+import Portfolio from "./portfolio";
 
 export default function HomePage() {
   const [index, setIndex] = useState(0);
@@ -45,11 +46,11 @@ export default function HomePage() {
       minHeight: "100vh",
       minWidth: "100%",
       padding: "0",
-      position: index === 1 ? "relative" : "fixed",
+      position: index === 1 || 3 ? "relative" : "fixed",
       //
     },
     carousel: {
-      minHeight: index === 1 ? "200vh" : "100vh",
+      minHeight: "100vh",
       minWidth: "100%",
       position: "absolute",
       zIndex: "100",
@@ -114,7 +115,7 @@ export default function HomePage() {
 
             <Button
               variant="link"
-              value="work"
+              value="experience"
               onClick={() => {
                 setIndex(2);
               }}
@@ -123,18 +124,30 @@ export default function HomePage() {
                 color: index === 2 ? "black" : "grey",
               }}
             >
-              work
+              experience
             </Button>
-
             <Button
               variant="link"
-              value="work"
+              value="portfolio"
               onClick={() => {
                 setIndex(3);
               }}
               style={{
                 textDecoration: index === 3 ? "underline" : "none",
                 color: index === 3 ? "black" : "grey",
+              }}
+            >
+              portfolio
+            </Button>
+            <Button
+              variant="link"
+              value="contact"
+              onClick={() => {
+                setIndex(4);
+              }}
+              style={{
+                textDecoration: index === 4 ? "underline" : "none",
+                color: index === 4 ? "black" : "grey",
               }}
             >
               contact
@@ -220,10 +233,12 @@ export default function HomePage() {
         <Carousel.Item id="about" style={style.carouselItem}>
           <About />
         </Carousel.Item>
-        <Carousel.Item id="work" style={style.carouselItem}>
-          <Work />
+        <Carousel.Item id="experience" style={style.carouselItem}>
+          <Experience />
         </Carousel.Item>
-
+        <Carousel.Item id="portfolio" style={style.carouselItem}>
+          <Portfolio />
+        </Carousel.Item>
         <Carousel.Item id="contact" style={style.carouselItem}></Carousel.Item>
       </Carousel>
     </Container>
