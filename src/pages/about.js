@@ -1,5 +1,11 @@
 import { Container, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import Oliver0 from "../assets/oliver0.jpg";
+import Oliver1 from "../assets/oliver1.jpg";
+import Oliver2 from "../assets/oliver2.jpg";
+import Oliver3 from "../assets/oliver3.jpg";
+import Oliver4 from "../assets/oliver4.png";
+import Oliver5 from "../assets/oliver5.png";
 
 export default function About() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -21,10 +27,24 @@ export default function About() {
   };
 
   const content = [
-    "https://images.unsplash.com/photo-1564067886520-e1ff2767eb1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2348&q=80",
-    "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-    "https://images.unsplash.com/photo-1600637080351-8e19e137c349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1382&q=80",
-    "https://images.unsplash.com/photo-1607155906501-f0e68e911649?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=966&q=80",
+    {
+      img: Oliver0,
+    },
+    {
+      img: Oliver1,
+    },
+    {
+      img: Oliver2,
+    },
+    {
+      img: Oliver3,
+    },
+    {
+      img: Oliver4,
+    },
+    {
+      img: Oliver5,
+    },
   ];
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
@@ -47,7 +67,7 @@ export default function About() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
-            backgroundImage: `url(${src})`,
+            backgroundImage: `url(${src.img})`,
           }}
         />
       ))}

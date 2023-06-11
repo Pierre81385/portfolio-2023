@@ -47,7 +47,7 @@ export default function HomePage() {
       minWidth: "100%",
       padding: "0",
       position: index === 1 || 3 ? "relative" : "fixed",
-      //
+      backgroundColor: "white",
     },
     carousel: {
       minHeight: "100vh",
