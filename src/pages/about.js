@@ -20,15 +20,14 @@ export default function About() {
       height: height,
       justifyContent: "center",
     },
-    cardTextLeft: {
-      textAlign: width > 720 ? "left" : "center",
-    },
-    cardTextRight: {
+
+    cardText: {
       textAlign: width > 720 ? "right" : "center",
     },
     img: {
       objectFit: "contain",
       height: width > 720 ? "100%" : "50%",
+      maxWidth: width > 720 ? "50%" : "100%",
       display: "flex",
     },
   };
@@ -37,22 +36,17 @@ export default function About() {
     {
       img: Me,
       title: "Please excuse the mess!",
-      textLeft: "This page is currently under re-construction.",
-      textRight:
-        "Stay tuned for a refreshed and more mobile responsive layout!",
+      text: "This page is currently under re-construction. Stay tuned for a refreshed and more mobile responsive layout!",
     },
     {
       img: LilMe,
       title: "From a young age...",
-      textLeft: "I've always been interested in tech, and here's the proof.",
-      textRight:
-        "For Halloween one year my dad helped me become a TV, and I'll be forever greatful if only just for this picture.",
+      text: "I've always been interested in tech, and here's the proof. For Halloween one year my dad helped me become a TV, and I'll be forever greatful if only just for this picture.",
     },
     {
       img: Oliver1,
       title: "This is Oliver",
-      textLeft: "I need to work to afford my dog's lavish lifestyle.",
-      textRight: "But how can I say 'no' to a cute like this?",
+      text: "I need to work to afford my dog's lavish lifestyle. But how can I say 'no' to a cute like this?",
     },
   ];
   useEffect(() => {
@@ -84,12 +78,12 @@ export default function About() {
         >
           <Card.Img variant="top" src={src.img} style={style.img}></Card.Img>
           <Card.ImgOverlay>
-            <Card.Title>{src.title}</Card.Title>
+            <Card.Title style={style.cardText}>{src.title}</Card.Title>
             <Card.Body>
               <Row>
-                <Col style={style.cardTextLeft}>{src.textLeft}</Col>
+                <Col></Col>
                 <Col sm={2} md={6}></Col>
-                <Col style={style.cardTextRight}>{src.textRight}</Col>
+                <Col style={style.cardText}>{src.text}</Col>
               </Row>
             </Card.Body>
           </Card.ImgOverlay>
