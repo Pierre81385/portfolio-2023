@@ -20,20 +20,39 @@ export default function About() {
       height: height,
       justifyContent: "center",
     },
-    cardText: {
+    cardTextLeft: {
+      textAlign: width > 720 ? "left" : "center",
+    },
+    cardTextRight: {
       textAlign: width > 720 ? "right" : "center",
+    },
+    img: {
+      objectFit: "contain",
+      height: width > 720 ? "100%" : "50%",
+      display: "flex",
     },
   };
 
   const content = [
     {
       img: Me,
+      title: "Please excuse the mess!",
+      textLeft: "This page is currently under re-construction.",
+      textRight:
+        "Stay tuned for a refreshed and more mobile responsive layout!",
     },
     {
       img: LilMe,
+      title: "From a young age...",
+      textLeft: "I've always been interested in tech, and here's the proof.",
+      textRight:
+        "For Halloween one year my dad helped me become a TV, and I'll be forever greatful if only just for this picture.",
     },
     {
       img: Oliver1,
+      title: "This is Oliver",
+      textLeft: "I need to work to afford my dog's lavish lifestyle.",
+      textRight: "But how can I say 'no' to a cute like this?",
     },
   ];
   useEffect(() => {
@@ -55,28 +74,25 @@ export default function About() {
             marginRight: "auto",
             marginTop: "20px",
             marginBottome: "20px",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "left bottom",
-            backgroundImage: `url(${src.img})`,
+            flexDirection: "column-reverse",
+
+            // backgroundSize: "contain",
+            // backgroundRepeat: "no-repeat",
+            // backgroundPosition: "left bottom",
+            // backgroundImage: `url(${src.img})`,
           }}
         >
-          <Container id="card-text" style={style.cardText}>
-            <Row>
-              <Col sm={0} md={6}></Col>
-              <Col sm={12} md={6}>
-                <h1>Headline Text</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  mi arcu, venenatis ac ullamcorper ac, tincidunt a libero.
-                  Vivamus convallis sem ut magna dignissim sagittis. Integer
-                  lacus mauris, placerat eu rhoncus sed, consectetur suscipit
-                  massa. Class aptent taciti sociosqu ad litora torquent per
-                  conubia nostra, per inceptos himenaeos.
-                </p>
-              </Col>
-            </Row>
-          </Container>
+          <Card.Img variant="top" src={src.img} style={style.img}></Card.Img>
+          <Card.ImgOverlay>
+            <Card.Title>{src.title}</Card.Title>
+            <Card.Body>
+              <Row>
+                <Col style={style.cardTextLeft}>{src.textLeft}</Col>
+                <Col sm={2} md={6}></Col>
+                <Col style={style.cardTextRight}>{src.textRight}</Col>
+              </Row>
+            </Card.Body>
+          </Card.ImgOverlay>
         </Card>
       ))}
     </Container>
