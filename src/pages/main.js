@@ -110,7 +110,7 @@ export default function Main() {
             </Container>
           ) : (
             <Container id="contact-container">
-              <h1>Contact</h1>
+              <Contact />
             </Container>
           )}
         </div>
