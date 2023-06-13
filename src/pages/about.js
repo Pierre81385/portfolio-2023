@@ -1,5 +1,7 @@
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import LilMe from "../assets/lilme.png";
+import Me from "../assets/me.png";
 import Oliver0 from "../assets/oliver0.jpg";
 import Oliver1 from "../assets/oliver1.jpg";
 import Oliver2 from "../assets/oliver2.jpg";
@@ -17,33 +19,26 @@ export default function About() {
 
   const style = {
     container: {
-      display: "flex",
       flexDirection: "column",
-      overflowX: "scroll",
-      padding: "20px",
-      width: "100%",
-      height: "100%",
+      overflow: "scroll",
+      maxWidth: width,
+      height: height,
+      justifyContent: "center",
+    },
+    cardText: {
+      textAlign: width > 720 ? "right" : "center",
     },
   };
 
   const content = [
     {
-      img: Oliver0,
+      img: Me,
+    },
+    {
+      img: LilMe,
     },
     {
       img: Oliver1,
-    },
-    {
-      img: Oliver2,
-    },
-    {
-      img: Oliver3,
-    },
-    {
-      img: Oliver4,
-    },
-    {
-      img: Oliver5,
     },
   ];
   useEffect(() => {
@@ -52,24 +47,42 @@ export default function About() {
   }, []);
 
   return (
-    <Container style={style.container}>
+    <Container style={style.container} fluid={true}>
       {content.map((src) => (
         <Card
-          key={src}
+          key={src.img}
           style={{
             flexShrink: 0,
-            width: width * 0.75,
-            height: height * 0.8,
+            width: "80%",
+            height: "80%",
             borderRadius: "10px",
-            marginLeft: "10px",
+            marginLeft: "auto",
+            marginRight: "auto",
             marginTop: "20px",
             marginBottome: "20px",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center center",
+            backgroundPosition: "left bottom",
             backgroundImage: `url(${src.img})`,
           }}
-        />
+        >
+          <Container id="card-text" style={style.cardText}>
+            <Row>
+              <Col sm={0} md={6}></Col>
+              <Col sm={12} md={6}>
+                <h1>Headline Text</h1>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                  mi arcu, venenatis ac ullamcorper ac, tincidunt a libero.
+                  Vivamus convallis sem ut magna dignissim sagittis. Integer
+                  lacus mauris, placerat eu rhoncus sed, consectetur suscipit
+                  massa. Class aptent taciti sociosqu ad litora torquent per
+                  conubia nostra, per inceptos himenaeos.
+                </p>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
       ))}
     </Container>
   );

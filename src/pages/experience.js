@@ -81,20 +81,22 @@ export default function Experience() {
   }, []);
 
   return (
-    <Container style={style.container}>
+    <Container style={style.container} id="experience-container">
       <Carousel
         variant="dark"
         style={style.carousel}
         indicators={false}
         controls={true}
+        id="experience-carousel"
       >
-        {content.map((src) => (
-          <Carousel.Item id={src}>
+        {content.map((src, index) => (
+          <Carousel.Item id={index}>
             <Card
               key={src.logo}
+              id={src.logo}
               style={{
                 flexShrink: 0,
-                width: width * 0.75,
+                width: width < 600 ? "97%" : width * 0.75,
                 height: height * 0.8,
                 borderRadius: "10px",
                 marginLeft: "10px",

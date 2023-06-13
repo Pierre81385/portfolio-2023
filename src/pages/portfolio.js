@@ -9,7 +9,6 @@ import POS from "../assets/pos.gif";
 export default function Portfolio() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  var size = 0.2;
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -21,19 +20,7 @@ export default function Portfolio() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const style = {
-    container: {
-      justifyContent: "center",
-      display: "flex",
-      flexDirection: "column",
-      overflowX: "scroll",
-      marginTop: "40px",
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginBottom: "auto",
-      height: "100%",
-    },
-  };
+  const style = {};
 
   const projects = [
     {
@@ -44,7 +31,7 @@ export default function Portfolio() {
       tech: "Flutter, Dart, FirebaseAuth, Firestore",
       git: "https://github.com/Pierre81385/app_playground",
       site: "",
-      size: 0.2,
+      type: "app",
     },
     {
       gif: Insta,
@@ -54,7 +41,7 @@ export default function Portfolio() {
       tech: "REACT, AWS S3, AWS DynamoDB, EC2, Express, FirbaseAuth, Firebase Firestore HTML, CSS, JAVASCRIPT, Bootstrap, and Mutler",
       git: "https://github.com/Pierre81385/authTester",
       site: "",
-      size: 0.2,
+      type: "app",
     },
     {
       gif: NightClub,
@@ -64,7 +51,7 @@ export default function Portfolio() {
       tech: "REACT, HTML, CSS, , Javascript, Bootstrap",
       git: "https://github.com/Pierre81385/super-duper-octo-waffle",
       site: "https://loving-panini-dbae11.netlify.app/",
-      size: 0.2,
+      type: "web",
     },
     {
       gif: eComm,
@@ -74,7 +61,7 @@ export default function Portfolio() {
       tech: "REACT, MongoDB, JWT, GraphQL, ApolloServer-Express, HTML, CSS, JAVASCRIPT, Bootstrap",
       git: "https://github.com/Pierre81385/scaling-lamp",
       site: "https://hidden-inlet-42331.herokuapp.com/",
-      size: 0.2,
+      type: "web",
     },
     {
       gif: BeerMe,
@@ -84,164 +71,9 @@ export default function Portfolio() {
       tech: "FunTranslations API, Punk API, JQUERY, HTML, CSS",
       git: "https://github.com/TJCourey/beerMe-international",
       site: "https://tjcourey.github.io/beerMe-international/",
-      size: 0.2,
+      type: "web",
     },
   ];
 
-  return (
-    <Container style={style.container} fluid={true}>
-      <Row
-        style={{
-          width: "100%",
-          margin: "auto",
-          padding: "auto",
-          justifyContent: "center",
-        }}
-      >
-        <Col
-          sm={12}
-          md={6}
-          style={{ justifyContent: "center", margin: "20px" }}
-        >
-          <Card
-            key={0}
-            style={{
-              width: height * 0.5,
-              height: height * 0.75,
-              borderColor: "black",
-              borderRadius: "15px",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center center",
-              backgroundImage: `url(${projects[0].gif})`,
-              backgroundColor: "black",
-              marginTop: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "20px",
-              padding: "auto",
-              boxShadow:
-                "0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)",
-            }}
-          ></Card>
-        </Col>
-        <Col
-          sm={12}
-          md={6}
-          style={{ justifyContent: "center", margin: "20px" }}
-        >
-          {" "}
-          <Card
-            key={1}
-            style={{
-              width: height * 0.5,
-              height: height * 0.75,
-              borderColor: "black",
-              borderRadius: "15px",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center center",
-              backgroundImage: `url(${projects[1].gif})`,
-              backgroundColor: "black",
-              marginTop: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "20px",
-
-              padding: "auto",
-              boxShadow:
-                "0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)",
-            }}
-          ></Card>
-        </Col>
-        <Col
-          sm={12}
-          md={6}
-          style={{ justifyContent: "center", margin: "20px" }}
-        >
-          {" "}
-          <Card
-            key={2}
-            style={{
-              width: height * 0.5,
-              height: height * 0.33,
-              borderColor: "black",
-              borderRadius: "15px",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center center",
-              backgroundImage: `url(${projects[2].gif})`,
-              backgroundColor: "black",
-              marginTop: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "20px",
-
-              padding: "auto",
-              boxShadow:
-                "0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)",
-            }}
-          ></Card>
-        </Col>
-        <Col
-          sm={12}
-          md={6}
-          style={{ justifyContent: "center", margin: "20px" }}
-        >
-          {" "}
-          <Card
-            key={3}
-            style={{
-              width: height * 0.5,
-              height: height * 0.33,
-              borderColor: "black",
-              borderRadius: "15px",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center center",
-              backgroundImage: `url(${projects[3].gif})`,
-              backgroundColor: "black",
-              marginTop: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "20px",
-
-              padding: "auto",
-              boxShadow:
-                "0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)",
-            }}
-          ></Card>
-        </Col>
-        <Col
-          sm={12}
-          md={6}
-          style={{ justifyContent: "center", margin: "20px" }}
-        >
-          {" "}
-          <Card
-            key={4}
-            style={{
-              width: height * 0.5,
-              height: height * 0.33,
-              borderColor: "black",
-              borderRadius: "15px",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center center",
-              backgroundImage: `url(${projects[4].gif})`,
-              backgroundColor: "black",
-              marginTop: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "20px",
-
-              padding: "auto",
-              boxShadow:
-                "0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)",
-            }}
-          ></Card>
-        </Col>
-      </Row>
-    </Container>
-  );
+  return <Container></Container>;
 }

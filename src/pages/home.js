@@ -83,79 +83,87 @@ export default function HomePage() {
         id="headerNavBar"
         variant="light"
       >
-        <Col md={12}>
-          <Nav className="me-auto" style={style.nav} as="row">
-            <Button
-              variant="link"
-              value="home"
-              onClick={() => {
-                setIndex(0);
-              }}
-              style={{
-                textDecoration: index === 0 ? "underline" : "none",
-                color: index === 0 ? "black" : "grey",
-              }}
-            >
-              peter bishop
-            </Button>
-            <h1>|</h1>
-            <Button
-              variant="link"
-              value="about"
-              onClick={() => {
-                setIndex(1);
-              }}
-              style={{
-                textDecoration: index === 1 ? "underline" : "none",
-                color: index === 1 ? "black" : "grey",
-              }}
-            >
-              about
-            </Button>
+        <Row style={{ width: width }} noGutters={true}>
+          <Col
+            sm={12}
+            md={6}
+            style={{ textAlign: width > 910 ? "left" : "center" }}
+          >
+            <Nav className="me-auto" style={style.nav}>
+              <Button
+                variant="link"
+                value="home"
+                onClick={() => {
+                  setIndex(0);
+                }}
+                style={{
+                  textDecoration: index === 0 ? "underline" : "none",
+                  color: index === 0 ? "black" : "grey",
+                }}
+              >
+                peter bishop
+              </Button>
+              <h1>|</h1>
+              <Button
+                variant="link"
+                value="about"
+                onClick={() => {
+                  setIndex(1);
+                }}
+                style={{
+                  textDecoration: index === 1 ? "underline" : "none",
+                  color: index === 1 ? "black" : "grey",
+                }}
+              >
+                about
+              </Button>
 
-            <Button
-              variant="link"
-              value="experience"
-              onClick={() => {
-                setIndex(2);
-              }}
-              style={{
-                textDecoration: index === 2 ? "underline" : "none",
-                color: index === 2 ? "black" : "grey",
-              }}
-            >
-              experience
-            </Button>
-            <Button
-              variant="link"
-              value="portfolio"
-              onClick={() => {
-                setIndex(3);
-              }}
-              style={{
-                textDecoration: index === 3 ? "underline" : "none",
-                color: index === 3 ? "black" : "grey",
-              }}
-            >
-              portfolio
-            </Button>
-            <Button
-              variant="link"
-              value="contact"
-              onClick={() => {
-                setIndex(4);
-              }}
-              style={{
-                textDecoration: index === 4 ? "underline" : "none",
-                color: index === 4 ? "black" : "grey",
-              }}
-            >
-              contact
-            </Button>
-          </Nav>
-        </Col>
-        <Col md={12}>
-          <Row style={{ justifyContent: "center", height: "10vh" }}>
+              <Button
+                variant="link"
+                value="experience"
+                onClick={() => {
+                  setIndex(2);
+                }}
+                style={{
+                  textDecoration: index === 2 ? "underline" : "none",
+                  color: index === 2 ? "black" : "grey",
+                }}
+              >
+                experience
+              </Button>
+              <Button
+                variant="link"
+                value="portfolio"
+                onClick={() => {
+                  setIndex(3);
+                }}
+                style={{
+                  textDecoration: index === 3 ? "underline" : "none",
+                  color: index === 3 ? "black" : "grey",
+                }}
+              >
+                portfolio
+              </Button>
+              <Button
+                variant="link"
+                value="contact"
+                onClick={() => {
+                  setIndex(4);
+                }}
+                style={{
+                  textDecoration: index === 4 ? "underline" : "none",
+                  color: index === 4 ? "black" : "grey",
+                }}
+              >
+                contact
+              </Button>
+            </Nav>
+          </Col>
+          <Col
+            sm={12}
+            md={6}
+            style={{ textAlign: width > 910 ? "right" : "center" }}
+          >
             <Button
               href="https://www.facebook.com/PeterJBishop"
               style={{
@@ -220,8 +228,8 @@ export default function HomePage() {
               onMouseEnter={() => setHoveringLk("6vh")}
               onMouseLeave={() => setHoveringLk("5vh")}
             ></Button>
-          </Row>
-        </Col>
+          </Col>
+        </Row>
       </Navbar>
       <Carousel
         activeIndex={index}
