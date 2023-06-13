@@ -20,7 +20,34 @@ export default function Portfolio() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const style = {};
+  const style = {
+    container: {
+      flexDirection: "row",
+      overflow: "scroll",
+      maxWidth: width,
+      height: "100%",
+      justifyContent: "start",
+    },
+
+    card: {
+      flexShrink: 1,
+      width: width > 720 ? "33vw" : "80vw",
+      //height: "80%",
+      borderRadius: "10px",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: "20px",
+      marginBottome: "20px",
+      flexDirection: "row",
+    },
+    img: {
+      objectFit: "contain",
+      height: "100%",
+      width: "100%",
+      display: "flex",
+      borderRadius: "10px",
+    },
+  };
 
   const projects = [
     {
@@ -75,5 +102,13 @@ export default function Portfolio() {
     },
   ];
 
-  return <Container></Container>;
+  return (
+    <Container style={style.container} fluid={false}>
+      {projects.map((src) => (
+        <Card key={src.img} style={style.card}>
+          <Card.Img variant="top" src={src.gif} style={style.img}></Card.Img>
+        </Card>
+      ))}
+    </Container>
+  );
 }

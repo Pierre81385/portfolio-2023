@@ -83,11 +83,11 @@ export default function HomePage() {
         id="headerNavBar"
         variant="light"
       >
-        <Row style={{ width: width }} noGutters={true}>
+        <Row style={{ width: "100%" }} noGutters={true}>
           <Col
             sm={12}
             md={6}
-            style={{ textAlign: width > 910 ? "left" : "center" }}
+            style={{ textAlign: width > 910 ? "center" : "center" }}
           >
             <Nav className="me-auto" style={style.nav}>
               <Button

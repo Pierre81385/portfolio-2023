@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Container, Nav, Button, Carousel } from "react-bootstrap";
+import { Container, Nav, Button, Carousel, Row } from "react-bootstrap";
 import About from "./about";
+import Portfolio from "./portfolio";
+import Contact from "./contact";
 
 export default function Main() {
   const [index, setIndex] = useState(0);
@@ -11,6 +13,9 @@ export default function Main() {
   const style = {
     nav: {
       justifyContent: "center",
+      textAlign: "center",
+      width: width,
+      margin: 0,
     },
     carousel: {
       heightt: height,
@@ -38,7 +43,11 @@ export default function Main() {
   }, []);
 
   return (
-    <Container id="main" fluid={true}>
+    <Container
+      id="main"
+      fluid={true}
+      style={{ margin: "0 auto", padding: "0 auto", width: "100vw" }}
+    >
       <Nav className="me-auto" style={style.nav}>
         <Button
           variant="link"
@@ -49,6 +58,9 @@ export default function Main() {
           style={{
             textDecoration: index === 0 ? "underline" : "none",
             color: index === 0 ? "black" : "grey",
+            textAlign: "center",
+            margin: "5px",
+            padding: 0,
           }}
         >
           about
@@ -62,6 +74,9 @@ export default function Main() {
           style={{
             textDecoration: index === 1 ? "underline" : "none",
             color: index === 1 ? "black" : "grey",
+            textAlign: "center",
+            margin: "5px",
+            padding: 0,
           }}
         >
           portfolio
@@ -75,6 +90,9 @@ export default function Main() {
           style={{
             textDecoration: index === 2 ? "underline" : "none",
             color: index === 2 ? "black" : "grey",
+            textAlign: "center",
+            margin: "5px",
+            padding: 0,
           }}
         >
           contact
@@ -88,7 +106,7 @@ export default function Main() {
             </Container>
           ) : index === 1 ? (
             <Container id="portfolio-container">
-              <h1>Portfolio</h1>
+              <Portfolio />
             </Container>
           ) : (
             <Container id="contact-container">
@@ -111,10 +129,10 @@ export default function Main() {
                 <About />
               </Carousel.Item>
               <Carousel.Item id="portfolio-view" style={style.carouselItem}>
-                <h1>Portfolio</h1>
+                <Portfolio />
               </Carousel.Item>
               <Carousel.Item id="contact-view" style={style.carouselItem}>
-                <h1>Contact</h1>
+                <Contact />
               </Carousel.Item>
             </Carousel>
           </Container>

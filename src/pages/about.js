@@ -23,6 +23,8 @@ export default function About() {
 
     cardText: {
       textAlign: width > 720 ? "right" : "center",
+      textTransform: "lowercase",
+      fontStyle: "italic",
     },
     img: {
       objectFit: "contain",
