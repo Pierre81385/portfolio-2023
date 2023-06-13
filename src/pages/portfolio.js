@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Carousel } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import BeerMe from "../assets/beer.gif";
 import eComm from "../assets/ecom.gif";
@@ -25,7 +25,7 @@ export default function Portfolio() {
       flexDirection: "row",
       overflow: "scroll",
       maxWidth: width,
-      height: "100%",
+      height: height,
       justifyContent: "start",
     },
 

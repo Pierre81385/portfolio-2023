@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Nav, Button, Carousel, Row } from "react-bootstrap";
+import { Container, Nav, Button, Carousel } from "react-bootstrap";
 import About from "./about";
 import Portfolio from "./portfolio";
 import Contact from "./contact";
