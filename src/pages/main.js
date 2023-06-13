@@ -13,11 +13,11 @@ export default function Main() {
       justifyContent: "center",
     },
     carousel: {
-      heightt: "100%",
+      heightt: height,
       width: width,
     },
     carouselItem: {
-      height: "100vh",
+      height: height,
       width: width,
     },
   };

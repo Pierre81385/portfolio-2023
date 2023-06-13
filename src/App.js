@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import HomePage from "./pages/home";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Main from "./pages/main";
 

@@ -2,12 +2,7 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import LilMe from "../assets/lilme.png";
 import Me from "../assets/me.png";
-import Oliver0 from "../assets/oliver0.jpg";
 import Oliver1 from "../assets/oliver1.jpg";
-import Oliver2 from "../assets/oliver2.jpg";
-import Oliver3 from "../assets/oliver3.jpg";
-import Oliver4 from "../assets/oliver4.png";
-import Oliver5 from "../assets/oliver5.png";
 
 export default function About() {
   const [width, setWidth] = useState(window.innerWidth);
