@@ -1,6 +1,6 @@
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import BeerMe from "../assets/beer.gif";
+import Match from "../assets/match.gif";
 import eComm from "../assets/ecom.gif";
 import Insta from "../assets/insta.gif";
 import NightClub from "../assets/nightclub.gif";
@@ -25,20 +25,13 @@ export default function Portfolio() {
       flexDirection: "row",
       overflow: "scroll",
       maxWidth: width,
-      height: height,
+      height: "100%",
       justifyContent: "start",
     },
-
     card: {
-      flexShrink: 1,
-      width: width > 720 ? "33vw" : "80vw",
-      //height: "80%",
+      margin: ".5vw",
       borderRadius: "10px",
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginTop: "20px",
-      marginBottome: "20px",
-      flexDirection: "row",
+      backgroundColor: "white",
     },
     img: {
       objectFit: "contain",
@@ -46,10 +39,22 @@ export default function Portfolio() {
       width: "100%",
       display: "flex",
       borderRadius: "10px",
+      objectPosition: "top",
+      padding: "1vw",
     },
   };
 
   const projects = [
+    {
+      gif: Match,
+      name: "Puppy Play Date",
+      description:
+        "Think 'tinder' for dogs to connect people and their dogs to help them arrange play dates. Built in Flutter/Dart for iOS, and using Firebase as the backend for Auth and storage.  Providing image uploads, location services, and chat functionality.",
+      tech: "Flutter, Dart, iOS, GoogleMaps API, Firebase Auth, Firestore",
+      git: "https://github.com/TJCourey/beerMe-international",
+      site: "https://tjcourey.github.io/beerMe-international/",
+      type: "web",
+    },
     {
       gif: POS,
       name: "Mobile Point of Sale",
@@ -64,7 +69,7 @@ export default function Portfolio() {
       gif: Insta,
       name: "InstaClone",
       description:
-        "This repo was originially intended to test out different auth API's, but the scope expanded into essentially an Instagram clone. Auth services are handled by FirbaseAuth, and user information is stored in a Firestore database. Images are stored in a bucket through AWS S3, and are linked to posts in an AWS DynamoDB database. DynamoDB stores tables for Posts, Comments, Likes, and Replys with each document's creatAt number serving as their unique identifier. Uploading is handled by Mutler. Front end routing is done with React, while backend routing is done through Express. This was deployed to EC2 to learn how this was done, but the instance is not active at this time.",
+        "A tester for AWS. Auth services are handled by FirbaseAuth, and user information is stored in a Firestore database. Images are stored in a bucket through AWS S3, and are linked to posts in an AWS DynamoDB database. DynamoDB stores tables for Posts, Comments, Likes, and Replys with each document's creatAt number serving as their unique identifier. Uploading is handled by Mutler. Front end routing is done with React, while backend routing is done through Express. Temporary deployment to EC2 discontinued.",
       tech: "REACT, AWS S3, AWS DynamoDB, EC2, Express, FirbaseAuth, Firebase Firestore HTML, CSS, JAVASCRIPT, Bootstrap, and Mutler",
       git: "https://github.com/Pierre81385/authTester",
       site: "",
@@ -90,25 +95,36 @@ export default function Portfolio() {
       site: "https://hidden-inlet-42331.herokuapp.com/",
       type: "web",
     },
-    {
-      gif: BeerMe,
-      name: "Beer Me!",
-      description:
-        "BeerMe is an app designed to provide beer suggestions based on user selected ABV and IBU preferences. This was a group project, focusing primarily on the use of multiple API's to provide data for beers and translations. I was primarily responsible for designing the logic on the backend that returns beers based on user input.",
-      tech: "FunTranslations API, Punk API, JQUERY, HTML, CSS",
-      git: "https://github.com/TJCourey/beerMe-international",
-      site: "https://tjcourey.github.io/beerMe-international/",
-      type: "web",
-    },
   ];
 
   return (
-    <Container style={style.container} fluid={false}>
-      {projects.map((src) => (
-        <Card key={src.img} style={style.card}>
-          <Card.Img variant="top" src={src.gif} style={style.img}></Card.Img>
-        </Card>
-      ))}
+    <Container style={style.container} className="d-flex">
+      <Row>
+        {projects.map((src) => (
+          <Col sm={12} md={4}>
+            <Container
+              style={{
+                padding: "1vw",
+                borderRadius: "10px",
+                flexDirection: "column",
+                width: "100%",
+              }}
+              className="d-flex"
+            >
+              <Card style={style.card}>
+                <Card.Title style={{ margin: ".5vw" }}>{src.name}</Card.Title>
+                <Card.Img variant="top" src={src.gif} style={style.img} />
+                <Card.Text style={{ margin: ".5vw" }}>
+                  {src.description}
+                </Card.Text>
+                <Card.Subtitle style={{ margin: ".5vw" }}>
+                  {src.tech}
+                </Card.Subtitle>
+              </Card>
+            </Container>
+          </Col>
+        ))}
+      </Row>
     </Container>
   );
 }
