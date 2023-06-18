@@ -5,6 +5,20 @@ import eComm from "../assets/ecom.gif";
 import Insta from "../assets/insta.gif";
 import NightClub from "../assets/nightclub.gif";
 import POS from "../assets/pos.gif";
+import AWS from "../assets/logos/aws.png";
+import Dart from "../assets/logos/dart.svg";
+import ExpressJS from "../assets/logos/expressjs.png";
+import Firebase from "../assets/logos/Firebase_Logo.png";
+import Firestore from "../assets/logos/Firestore.jpg";
+import Flutter from "../assets/logos/flutter.svg";
+//import HTML from "../assets/logos/html5.png";
+import Javascript from "../assets/logos/javascript.png";
+//import JSON from "../assets/logos/JSON.png";
+import ReactBoostrap from "../assets/logos/logo.svg";
+import MongoDB from "../assets/logos/mongodb.png";
+//import MySQL from "../assets/logos/mysql-logo.png";
+import React from "../assets/logos/react.png";
+//import Sequelize from "../assets/logos/sequelize-logo.png";
 
 export default function Portfolio() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -25,7 +39,7 @@ export default function Portfolio() {
       flexDirection: "row",
       overflow: "scroll",
       maxWidth: width,
-      height: "100%",
+      height: height,
       justifyContent: "start",
     },
     card: {
@@ -42,6 +56,10 @@ export default function Portfolio() {
       objectPosition: "top",
       padding: "1vw",
     },
+    logos: {
+      height: "4vh",
+      width: "auto",
+    },
   };
 
   const projects = [
@@ -54,6 +72,7 @@ export default function Portfolio() {
       git: "https://github.com/TJCourey/beerMe-international",
       site: "https://tjcourey.github.io/beerMe-international/",
       type: "web",
+      logos: [Flutter, Dart, Firebase, Firestore],
     },
     {
       gif: POS,
@@ -64,6 +83,7 @@ export default function Portfolio() {
       git: "https://github.com/Pierre81385/app_playground",
       site: "",
       type: "app",
+      logos: [Flutter, Dart, Firebase, Firestore],
     },
     {
       gif: Insta,
@@ -74,6 +94,7 @@ export default function Portfolio() {
       git: "https://github.com/Pierre81385/authTester",
       site: "",
       type: "app",
+      logos: [React, ReactBoostrap, AWS, ExpressJS, Firebase, Firestore],
     },
     {
       gif: NightClub,
@@ -84,6 +105,7 @@ export default function Portfolio() {
       git: "https://github.com/Pierre81385/super-duper-octo-waffle",
       site: "https://loving-panini-dbae11.netlify.app/",
       type: "web",
+      logos: [React, ReactBoostrap, Javascript],
     },
     {
       gif: eComm,
@@ -94,8 +116,15 @@ export default function Portfolio() {
       git: "https://github.com/Pierre81385/scaling-lamp",
       site: "https://hidden-inlet-42331.herokuapp.com/",
       type: "web",
+      logos: [React, ReactBoostrap, MongoDB, ExpressJS],
     },
   ];
+
+  function GenerateLogos(data) {
+    return data.map((asset) => (
+      <img src={asset} style={style.logos} alt="logo"></img>
+    ));
+  }
 
   return (
     <Container style={style.container} className="d-flex">
@@ -113,12 +142,15 @@ export default function Portfolio() {
             >
               <Card style={style.card}>
                 <Card.Title style={{ margin: ".5vw" }}>{src.name}</Card.Title>
+
                 <Card.Img variant="top" src={src.gif} style={style.img} />
                 <Card.Text style={{ margin: ".5vw" }}>
                   {src.description}
                 </Card.Text>
                 <Card.Subtitle style={{ margin: ".5vw" }}>
-                  {src.tech}
+                  <Row style={{ justifyContent: "center" }}>
+                    {GenerateLogos(src.logos)}
+                  </Row>
                 </Card.Subtitle>
               </Card>
             </Container>
