@@ -28,8 +28,8 @@ export default function About() {
     },
     img: {
       objectFit: "contain",
-      height: width > 720 ? "100%" : "50%",
-      maxWidth: width > 720 ? "50%" : "100%",
+      height: width > 965 ? "100%" : "50%",
+      maxWidth: width > 965 ? "50%" : "100%",
       display: "flex",
     },
   };
@@ -37,18 +37,18 @@ export default function About() {
   const content = [
     {
       img: Me,
-      title: "Please excuse the mess!",
-      text: "This page is currently under re-construction. Stay tuned for a refreshed and more mobile responsive layout!",
+      title: "Hey, I'm Peter!",
+      text: "I'm a full stack developer with a passion for learning with unending curiosity that drives me to ask, 'How'd they do that?' on a daily basis. I currently work for ClickUp as a Technical Support Specialist, project basis QA Specialist, and API Subject Matter Expert. Whenn I'm not doing a deep dive feature investigation, you can find me writing postman scripts or exploring various api endpoints to see where they lead!",
     },
     {
       img: LilMe,
       title: "From a young age...",
-      text: "I've always been interested in tech, and here's the proof. For Halloween one year my dad helped me become a TV, and I'll be forever greatful if only just for this picture.",
+      text: "I was always a nerd at heart, and this consistent interest has carried me from building data processing formulas in spreadsheets, to pulling reports with MySql queries, to building full stack app projects. I graduated from CUNY Baruch College with a BBA in Economics, and after exploring a variety of career paths, I decided to take the plunge in a coding bootcamp with the University of Denver.  Following this I was happy to find new skills in self learning that have propelled me from the MERN stack foundation of the bootcamp curriculum to new skills using Flutter and Dart, Amazon Web Services, and Google Firebase to name a few.",
     },
     {
       img: Oliver1,
-      title: "This is Oliver",
-      text: "I need to work to afford my dog's lavish lifestyle. But how can I say 'no' to a cute like this?",
+      title: "This is my dog Oliver",
+      text: "How do I tell my dog I need to do this to afford his lavish lifestyle?",
     },
   ];
   useEffect(() => {
