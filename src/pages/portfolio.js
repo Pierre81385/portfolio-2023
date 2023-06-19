@@ -23,6 +23,8 @@ import React from "../assets/logos/react.png";
 export default function Portfolio() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+  const [selected, setSelected] = useState("");
+  const [details, setDetails] = useState("");
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -38,24 +40,11 @@ export default function Portfolio() {
     container: {
       flexDirection: "row",
       overflow: "scroll",
-      maxWidth: width,
+      minWidth: width,
       height: height,
-      justifyContent: "start",
+      justifyContent: "center",
     },
-    card: {
-      margin: ".5vw",
-      borderRadius: "10px",
-      backgroundColor: "white",
-    },
-    img: {
-      objectFit: "contain",
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      borderRadius: "10px",
-      objectPosition: "top",
-      padding: "1vw",
-    },
+
     logos: {
       height: "4vh",
       width: "auto",
@@ -65,9 +54,9 @@ export default function Portfolio() {
   const projects = [
     {
       gif: Match,
-      name: "Puppy Play Date",
+      name: "FLUTTER/DART, FIREBASE, GoogleMaps API",
       description:
-        "Think 'tinder' for dogs to connect people and their dogs to help them arrange play dates. Built in Flutter/Dart for iOS, and using Firebase as the backend for Auth and storage.  Providing image uploads, location services, and chat functionality.",
+        "Think 'tinder' for dogs to connect people and their dogs to help them arrange play dates. Built in Flutter/Dart for iOS, and using Firebase as the backend for Auth and storage.  Providing image uploads, location services map view through GoogleMaps, and chat functionality.",
       tech: "Flutter, Dart, iOS, GoogleMaps API, Firebase Auth, Firestore",
       git: "https://github.com/TJCourey/beerMe-international",
       site: "https://tjcourey.github.io/beerMe-international/",
@@ -76,7 +65,7 @@ export default function Portfolio() {
     },
     {
       gif: POS,
-      name: "Mobile Point of Sale",
+      name: "FLUTTER/DART",
       description:
         "This is my first Flutter/Dart application, which I modeled after a point of sale ordering system for use on mobile. Authorization is handled by Firebase Auth, with database services to store user profiles, menu items, and ordering information provided by Firestore. The focus of this project was to work with flutter to create a layout that was generated dynamically from database content.",
       tech: "Flutter, Dart, FirebaseAuth, Firestore",
@@ -87,7 +76,7 @@ export default function Portfolio() {
     },
     {
       gif: Insta,
-      name: "InstaClone",
+      name: "REACT/AWS/FIRESTORE",
       description:
         "A tester for AWS. Auth services are handled by FirbaseAuth, and user information is stored in a Firestore database. Images are stored in a bucket through AWS S3, and are linked to posts in an AWS DynamoDB database. DynamoDB stores tables for Posts, Comments, Likes, and Replys with each document's creatAt number serving as their unique identifier. Uploading is handled by Mutler. Front end routing is done with React, while backend routing is done through Express. Temporary deployment to EC2 discontinued.",
       tech: "REACT, AWS S3, AWS DynamoDB, EC2, Express, FirbaseAuth, Firebase Firestore HTML, CSS, JAVASCRIPT, Bootstrap, and Mutler",
@@ -98,7 +87,7 @@ export default function Portfolio() {
     },
     {
       gif: NightClub,
-      name: "NightClub",
+      name: "REACT",
       description:
         "This site is primarly a demonstrator and experiment in creating a layout with sliding sections of moving content. The result is a night club themed site with 4 sections that each display a different video background with overlayed content. I relied heavily on the creative use of CSS, Bootstrap, and React states to solve a variety of creative challenges. Not mobile friendly, but a visually appealing experiment on desktop environments!",
       tech: "REACT, HTML, CSS, , Javascript, Bootstrap",
@@ -109,7 +98,7 @@ export default function Portfolio() {
     },
     {
       gif: eComm,
-      name: "Scaling Lamp",
+      name: "MERN Stack",
       description:
         "Scaling-Lamp is a demonstration of an ecommerce site built with React.js, MongoDB, Apollo GraphQL, and JWT. Users can create an account and login, with authenticaion via JWT enabling logged-in users to access the entire site. Logged-in users can go beyond viewing availible products, with the ability to create, update, and delete products, as well as adding products to a purchase cart.",
       tech: "REACT, MongoDB, JWT, GraphQL, ApolloServer-Express, HTML, CSS, JAVASCRIPT, Bootstrap",
@@ -128,35 +117,101 @@ export default function Portfolio() {
 
   return (
     <Container style={style.container} className="d-flex">
-      <Row>
-        {projects.map((src) => (
-          <Col sm={12} md={4}>
+      {projects.map((src) => (
+        <Col
+          lg={selected === src.name ? 6 : 2}
+          style={{
+            margin: "1vh",
+
+            display:
+              selected === src.name
+                ? "block"
+                : selected === ""
+                ? "block"
+                : "none",
+          }}
+        >
+          <Card
+            key={src.gif}
+            style={{
+              flexShrink: 1,
+              width: "100%",
+              height: "60%",
+              borderRadius: "10px",
+              flexDirection: "column-reverse",
+              backgroundSize: selected === src.name ? "contain" : "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundImage: `url(${src.gif})`,
+            }}
+            onClick={() => {
+              if (selected === src.name) {
+                setSelected("");
+              } else {
+                setSelected(src.name);
+                setDetails("");
+                setDetails("");
+              }
+            }}
+            onMouseEnter={() => {
+              if (selected === src.name) {
+                setDetails("");
+              }
+              if (selected === "") {
+                setDetails(src.name);
+              }
+            }}
+            onMouseLeave={() => {
+              setDetails("");
+            }}
+          >
             <Container
               style={{
-                padding: "1vw",
-                borderRadius: "10px",
-                flexDirection: "column",
+                backgroundColor: "rgba(255,255,255,0.8)",
                 width: "100%",
+                height: "100%",
+                borderRadius: "7px",
+                display: details === src.name ? "flex" : "none",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
               }}
-              className="d-flex"
             >
-              <Card style={style.card}>
-                <Card.Title style={{ margin: ".5vw" }}>{src.name}</Card.Title>
-
-                <Card.Img variant="top" src={src.gif} style={style.img} />
-                <Card.Text style={{ margin: ".5vw" }}>
-                  {src.description}
-                </Card.Text>
-                <Card.Subtitle style={{ margin: ".5vw" }}>
-                  <Row style={{ justifyContent: "center" }}>
+              <h1>+</h1>
+            </Container>
+            <Row style={{ margin: "-1vh" }}>
+              <Col
+                lg={selected === src.nam ? 1 : 6}
+                style={{ height: "100%", width: "100%" }}
+              ></Col>
+              <Col
+                lg={selected === src.nam ? 6 : 1}
+                style={{ height: "100%", width: "100%" }}
+              >
+                <Container
+                  style={{
+                    display: selected === src.name ? "block" : "none",
+                    backgroundColor: "rgba(255,255,255,0.75)",
+                    borderRadius: "7px",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <Row>
+                    <Card.Title style={style.cardText}>{src.name}</Card.Title>
+                  </Row>
+                  <Row>
+                    <Col style={style.cardText}>{src.description}</Col>
+                  </Row>
+                  <Row style={{ margin: "1vh" }}>
                     {GenerateLogos(src.logos)}
                   </Row>
-                </Card.Subtitle>
-              </Card>
-            </Container>
-          </Col>
-        ))}
-      </Row>
+                </Container>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      ))}
     </Container>
   );
 }

@@ -7,6 +7,7 @@ import Oliver1 from "../assets/oliver1.jpg";
 export default function About() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+  const [selected, setSelected] = useState("");
   const updateDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
@@ -20,25 +21,29 @@ export default function About() {
       height: height,
       justifyContent: "center",
     },
-
+    cardTextContainer: {
+      backgroundColor: "rgba(255,255,255,0.5)",
+      width: "100%",
+      height: "100%",
+    },
     cardText: {
-      textAlign: width > 720 ? "right" : "center",
+      textAlign: "center",
       textTransform: "lowercase",
       fontStyle: "italic",
     },
-    img: {
-      objectFit: "contain",
-      height: width > 965 ? "100%" : "50%",
-      maxWidth: width > 965 ? "50%" : "100%",
-      display: "flex",
-    },
+    // img: {
+    //   objectFit: "contain",
+    //   height: width > 965 ? "100%" : "50%",
+    //   maxWidth: width > 965 ? "50%" : "100%",
+    //   display: "flex",
+    // },
   };
 
   const content = [
     {
       img: Me,
       title: "Hey, I'm Peter!",
-      text: "I'm a full stack developer with a passion for learning with unending curiosity that drives me to ask, 'How'd they do that?' on a daily basis. I currently work for ClickUp as a Technical Support Specialist, project basis QA Specialist, and API Subject Matter Expert. Whenn I'm not doing a deep dive feature investigation, you can find me writing postman scripts or exploring various api endpoints to see where they lead!",
+      text: "I'm a full stack developer with a passion for learning with unending curiosity that drives me to ask, 'How'd they do that?' on a daily basis. I currently work for ClickUp as a Technical Support Specialist, project basis QA Specialist, and API Subject Matter Expert. When I'm not doing a deep dive feature investigation, you can find me writing postman scripts or exploring various api endpoints to see where they lead!",
     },
     {
       img: LilMe,
@@ -62,8 +67,8 @@ export default function About() {
         <Card
           key={src.img}
           style={{
-            flexShrink: 0,
-            width: "80%",
+            flexShrink: 1,
+            width: width > 1200 ? "33%" : width > 900 ? "50%" : "100%",
             height: "80%",
             borderRadius: "10px",
             marginLeft: "auto",
@@ -72,23 +77,34 @@ export default function About() {
             marginBottome: "20px",
             flexDirection: "column-reverse",
 
-            // backgroundSize: "contain",
-            // backgroundRepeat: "no-repeat",
-            // backgroundPosition: "left bottom",
-            // backgroundImage: `url(${src.img})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "left bottom",
+            backgroundImage: `url(${src.img})`,
+          }}
+          onMouseEnter={() => {
+            setSelected(src.title);
+          }}
+          onMouseLeave={() => {
+            setSelected("");
           }}
         >
-          <Card.Img variant="top" src={src.img} style={style.img}></Card.Img>
-          <Card.ImgOverlay>
-            <Card.Title style={style.cardText}>{src.title}</Card.Title>
-            <Card.Body>
-              <Row>
-                <Col></Col>
-                <Col sm={2} md={6}></Col>
-                <Col style={style.cardText}>{src.text}</Col>
-              </Row>
-            </Card.Body>
-          </Card.ImgOverlay>
+          <Container
+            style={{
+              display: selected === src.title ? "block" : "none",
+              backgroundColor: "rgba(255,255,255,0.75)",
+              width: "100%",
+              height: "100%",
+              borderRadius: "10px",
+            }}
+          >
+            <Row>
+              <Card.Title style={style.cardText}>{src.title}</Card.Title>
+            </Row>
+            <Row>
+              <Col style={style.cardText}>{src.text}</Col>
+            </Row>
+          </Container>
         </Card>
       ))}
     </Container>
