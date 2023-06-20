@@ -1,4 +1,11 @@
-import { Container, Card, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Row,
+  Col,
+  Carousel,
+  CarouselItem,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Match from "../assets/match.gif";
 import eComm from "../assets/ecom.gif";
@@ -25,6 +32,7 @@ export default function Portfolio() {
   const [height, setHeight] = useState(window.innerHeight);
   const [selected, setSelected] = useState("");
   const [details, setDetails] = useState("");
+  const [mobile, setMobile] = useState(true);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -33,21 +41,36 @@ export default function Portfolio() {
 
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+      if (width > height) {
+        setMobile(false);
+      } else {
+        setMobile(true);
+      }
+    };
   }, []);
 
   const style = {
     container: {
-      flexDirection: "row",
-      overflow: "scroll",
-      minWidth: width,
-      height: height,
-      justifyContent: "center",
+      margin: 0,
+      padding: 0,
     },
-
     logos: {
       height: "4vh",
       width: "auto",
+    },
+    carousel: {
+      justifyContent: "center",
+      height: "80%",
+      width: "100%",
+    },
+    item: {
+      display: "flex",
+      justifyContent: "center",
+      textAlign: "center",
+      height: "100%",
+      width: width,
     },
   };
 
@@ -115,103 +138,5 @@ export default function Portfolio() {
     ));
   }
 
-  return (
-    <Container style={style.container} className="d-flex">
-      {projects.map((src) => (
-        <Col
-          lg={selected === src.name ? 6 : 2}
-          style={{
-            margin: "1vh",
-
-            display:
-              selected === src.name
-                ? "block"
-                : selected === ""
-                ? "block"
-                : "none",
-          }}
-        >
-          <Card
-            key={src.gif}
-            style={{
-              flexShrink: 1,
-              width: "100%",
-              height: "60%",
-              borderRadius: "10px",
-              flexDirection: "column-reverse",
-              backgroundSize: selected === src.name ? "contain" : "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundImage: `url(${src.gif})`,
-            }}
-            onClick={() => {
-              if (selected === src.name) {
-                setSelected("");
-              } else {
-                setSelected(src.name);
-                setDetails("");
-                setDetails("");
-              }
-            }}
-            onMouseEnter={() => {
-              if (selected === src.name) {
-                setDetails("");
-              }
-              if (selected === "") {
-                setDetails(src.name);
-              }
-            }}
-            onMouseLeave={() => {
-              setDetails("");
-            }}
-          >
-            <Container
-              style={{
-                backgroundColor: "rgba(255,255,255,0.8)",
-                width: "100%",
-                height: "100%",
-                borderRadius: "7px",
-                display: details === src.name ? "flex" : "none",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-              }}
-            >
-              <h1>+</h1>
-            </Container>
-            <Row style={{ margin: "-1vh" }}>
-              <Col
-                lg={selected === src.nam ? 1 : 6}
-                style={{ height: "100%", width: "100%" }}
-              ></Col>
-              <Col
-                lg={selected === src.nam ? 6 : 1}
-                style={{ height: "100%", width: "100%" }}
-              >
-                <Container
-                  style={{
-                    display: selected === src.name ? "block" : "none",
-                    backgroundColor: "rgba(255,255,255,0.75)",
-                    borderRadius: "7px",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <Row>
-                    <Card.Title style={style.cardText}>{src.name}</Card.Title>
-                  </Row>
-                  <Row>
-                    <Col style={style.cardText}>{src.description}</Col>
-                  </Row>
-                  <Row style={{ margin: "1vh" }}>
-                    {GenerateLogos(src.logos)}
-                  </Row>
-                </Container>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-      ))}
-    </Container>
-  );
+  return <Container></Container>;
 }

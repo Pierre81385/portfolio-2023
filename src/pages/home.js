@@ -231,6 +231,12 @@ export default function HomePage() {
           </Col>
         </Row>
       </Navbar>
+      <Container>
+        <h1>Peter John Bishop</h1>
+      </Container>
+      <Container>
+        <h1>FULL STACK WEB DEVELOPER</h1>
+      </Container>
       <Carousel
         activeIndex={index}
         style={style.carousel}

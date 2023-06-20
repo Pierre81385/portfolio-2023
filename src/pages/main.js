@@ -24,6 +24,7 @@ export default function Main() {
     carouselItem: {
       height: height,
       width: width,
+      justifyContent: "center",
     },
   };
 
@@ -46,7 +47,7 @@ export default function Main() {
     <Container
       id="main"
       fluid={true}
-      style={{ margin: "0 auto", padding: "0 auto", width: "100vw" }}
+      style={{ margin: "0", padding: "0", width: "100vw" }}
     >
       <Nav className="me-auto" style={style.nav}>
         <Button
@@ -115,28 +116,30 @@ export default function Main() {
           )}
         </div>
       ) : (
-        <div>
-          <Container id="carousel-container" fluid={true}>
-            <Carousel
-              activeIndex={index}
-              variant="dark"
-              style={style.carousel}
-              indicators={false}
-              controls={false}
-              id="main-carousel"
-            >
-              <Carousel.Item id="about-view" style={style.carouselItem}>
-                <About />
-              </Carousel.Item>
-              <Carousel.Item id="portfolio-view" style={style.carouselItem}>
-                <Portfolio />
-              </Carousel.Item>
-              <Carousel.Item id="contact-view" style={style.carouselItem}>
-                <Contact />
-              </Carousel.Item>
-            </Carousel>
-          </Container>
-        </div>
+        <Container
+          id="carousel-container"
+          fluid={true}
+          style={{ padding: 0, margin: 0, height: "100%" }}
+        >
+          <Carousel
+            activeIndex={index}
+            variant="dark"
+            style={style.carousel}
+            indicators={false}
+            controls={false}
+            id="main-carousel"
+          >
+            <Carousel.Item id="about-view" style={style.carouselItem}>
+              <About />
+            </Carousel.Item>
+            <Carousel.Item id="portfolio-view" style={style.carouselItem}>
+              <Portfolio />
+            </Carousel.Item>
+            <Carousel.Item id="contact-view" style={style.carouselItem}>
+              <Contact />
+            </Carousel.Item>
+          </Carousel>
+        </Container>
       )}
       ;
     </Container>

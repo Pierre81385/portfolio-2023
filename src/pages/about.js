@@ -3,11 +3,29 @@ import { useState, useEffect } from "react";
 import LilMe from "../assets/lilme.png";
 import Me from "../assets/me.png";
 import Oliver1 from "../assets/oliver1.jpg";
+import AWS from "../assets/logos/aws.png";
+import Dart from "../assets/logos/dart.svg";
+import ExpressJS from "../assets/logos/expressjs.png";
+import Firebase from "../assets/logos/Firebase_Logo.png";
+import Firestore from "../assets/logos/Firestore.jpg";
+import Flutter from "../assets/logos/flutter.svg";
+import HTML from "../assets/logos/html5.png";
+import Javascript from "../assets/logos/javascript.png";
+import JSON from "../assets/logos/JSON.png";
+import ReactBoostrap from "../assets/logos/logo.svg";
+import MongoDB from "../assets/logos/mongodb.png";
+import MySQL from "../assets/logos/mysql-logo.png";
+import React from "../assets/logos/react.png";
+import Sequelize from "../assets/logos/sequelize-logo.png";
+import Node from "../assets/logos/node.png";
+import Git from "../assets/logos/github-logo.png";
+import iOS from "../assets/logos/iOS.jpg";
+import Postman from "../assets/logos/logo.webp";
 
 export default function About() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const [selected, setSelected] = useState("");
+  const [show, setShow] = useState(true);
   const updateDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
@@ -15,29 +33,59 @@ export default function About() {
 
   const style = {
     container: {
-      flexDirection: "column",
-      overflow: "scroll",
-      maxWidth: width,
+      width: width,
       height: height,
+      margin: 0,
+      display: "flex",
+      flexDirection: "row",
       justifyContent: "center",
+      overflow: "scroll",
     },
-    cardTextContainer: {
-      backgroundColor: "rgba(255,255,255,0.5)",
-      width: "100%",
+    img: {
       height: "100%",
+      objectFit: "contain",
+      position: "fixed",
+      display: show === true ? "block" : "none",
     },
-    cardText: {
-      textAlign: "center",
-      textTransform: "lowercase",
+    card: {
+      width: width > height ? "33%" : "90%",
+    },
+    logos: {
+      height: "4vh",
+      width: "auto",
+      margin: "2vh",
+    },
+    quotes: {
       fontStyle: "italic",
+      color: "grey",
     },
-    // img: {
-    //   objectFit: "contain",
-    //   height: width > 965 ? "100%" : "50%",
-    //   maxWidth: width > 965 ? "50%" : "100%",
-    //   display: "flex",
-    // },
   };
+
+  const logos = [
+    AWS,
+    Dart,
+    ExpressJS,
+    Firebase,
+    Firestore,
+    Flutter,
+    HTML,
+    Javascript,
+    JSON,
+    React,
+    ReactBoostrap,
+    MongoDB,
+    Sequelize,
+    MySQL,
+    Node,
+    Git,
+    Postman,
+  ];
+
+  function GenerateLogos(data) {
+    return logos.map((asset) => (
+      <img src={asset} style={style.logos} alt="logo"></img>
+    ));
+  }
 
   const content = [
     {
@@ -63,50 +111,61 @@ export default function About() {
 
   return (
     <Container style={style.container} fluid={true}>
-      {content.map((src) => (
-        <Card
-          key={src.img}
-          style={{
-            flexShrink: 1,
-            width: width > 1200 ? "33%" : width > 900 ? "50%" : "100%",
-            height: "80%",
-            borderRadius: "10px",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: "20px",
-            marginBottome: "20px",
-            flexDirection: "column-reverse",
-
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "left bottom",
-            backgroundImage: `url(${src.img})`,
-          }}
-          onMouseEnter={() => {
-            setSelected(src.title);
-          }}
-          onMouseLeave={() => {
-            setSelected("");
-          }}
-        >
-          <Container
-            style={{
-              display: selected === src.title ? "block" : "none",
-              backgroundColor: "rgba(255,255,255,0.75)",
-              width: "100%",
-              height: "100%",
-              borderRadius: "10px",
-            }}
-          >
-            <Row>
-              <Card.Title style={style.cardText}>{src.title}</Card.Title>
-            </Row>
-            <Row>
-              <Col style={style.cardText}>{src.text}</Col>
-            </Row>
+      <Card
+        style={style.card}
+        onMouseEnter={() => {
+          setShow(false);
+        }}
+        onMouseLeave={() => {
+          setShow(true);
+        }}
+        onClick={() => {
+          if (show === true) {
+            setShow(false);
+          } else {
+            setShow(true);
+          }
+        }}
+      >
+        <Container style={{ textAlign: "center" }}>
+          <Container style={{ marginTop: "2vh" }}>
+            <Container style={{ textAlign: "center" }}>
+              <h1>PETER JOHN BISHOP</h1>
+            </Container>
+            <Container style={{ textAlign: "center" }}>
+              <h4 style={{ color: "grey" }}>FULL STACK DEVELOPER</h4>
+            </Container>
+            <Container
+              style={{ height: ".25vh", backgroundColor: "black" }}
+            ></Container>
+            {GenerateLogos(logos)}
+            <Container
+              style={{ height: ".25vh", backgroundColor: "black" }}
+            ></Container>
+            <Container style={{ marginTop: "2vh" }}>
+              <h5 style={style.quotes}>
+                "Peter is a highly intelligent and motivated person. He is a
+                well-organized professional, genuinely interested in improving
+                the operation of his team. Peter and I worked together on many
+                occasions and his hard working and professional approach made an
+                enduring impression. I will recommend Peter for any company and
+                for any high-level role."{" "}
+                <h3 style={{ color: "black" }}>- G. McNulty</h3>
+              </h5>
+              <h5 style={style.quotes}>
+                "he does computer-y stuff"{" "}
+                <h3 style={{ color: "black" }}>- girlfriend</h3>
+              </h5>
+              <h5 style={style.quotes}>
+                "Peter's work ethic, understanding of code and ability to
+                explain what is going on behind the scenes is exemplary."{" "}
+                <h3 style={{ color: "black" }}>- J. Neuner</h3>
+              </h5>
+            </Container>
           </Container>
-        </Card>
-      ))}
+        </Container>
+        <img src={Me} alt="me-foreground" style={style.img}></img>
+      </Card>
     </Container>
   );
 }
