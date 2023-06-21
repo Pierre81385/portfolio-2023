@@ -48,7 +48,7 @@ export default function About() {
       display: show === true ? "block" : "none",
     },
     card: {
-      width: width > height ? "33%" : "90%",
+      width: width > height ? "40%" : "90%",
     },
     logos: {
       height: "4vh",
