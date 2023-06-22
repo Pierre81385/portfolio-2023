@@ -5,7 +5,7 @@ export default function Create() {
   const [form, setForm] = useState({
     name: "",
     comment: "",
-    date: "",
+    date: Date().toLocaleLowerCase(),
   });
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ export default function Create() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newComment = { ...form };
 
-    await fetch("http://localhost:5050/record", {
+    await fetch("http://localhost:5050/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
