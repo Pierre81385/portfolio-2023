@@ -1,5 +1,13 @@
-import { Row, Col, Button, Container, Image } from "react-bootstrap";
-import { useState } from "react";
+import {
+  Row,
+  Col,
+  Button,
+  Container,
+  Image,
+  Form,
+  Card,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
 import FacebookLogo from "../assets/face.png";
 import InstagramLogo from "../assets/insta.png";
 import LinkedInLogo from "../assets/linkd.png";
@@ -13,13 +21,76 @@ export default function Contact() {
   const [hoveringGit, setHoveringGit] = useState("5vh");
   const [hoverPhone, setHoverPhone] = useState("black");
   const [hoverEmail, setHoverEmail] = useState("black");
+  const [form, setForm] = useState({
+    name: "",
+    comment: "",
+  });
+
+  const [comments, setComments] = useState([]);
+
+  // This method fetches the records from the database.
+  useEffect(() => {
+    async function getComments() {
+      const response = await fetch(`http://localhost:5050/comment/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const comments = await response.json();
+      setComments(comments);
+    }
+
+    getComments();
+
+    return;
+  }, [comments.length]);
+
+  function updateForm(value) {
+    return setForm((prev) => {
+      return { ...prev, ...value };
+    });
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    // When a post request is sent to the create url, we'll add a new record to the database.
+    const newComment = { ...form };
+
+    await fetch("http://localhost:5050/comment/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newComment),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+
+    setForm({ name: "", comment: "" });
+  }
+
+  async function deleteComment(id) {
+    await fetch(`http://localhost:5050/comment/${id}`, {
+      method: "DELETE",
+    });
+
+    const newComments = comments.filter((el) => el._id !== id);
+    setComments(newComments);
+  }
 
   const style = {
     container: {
       margin: "0",
       padding: "0",
-      height: "10vh",
+      height: "100%",
       backgroundColor: "transparent",
+      display: "flex",
+      overflow: "scroll",
       flexWrap: "wrap",
     },
     row: {
@@ -151,6 +222,64 @@ export default function Contact() {
           </Row>
         </Col>
       </Row>
+      <Container
+        style={{
+          marginTop: "2vh",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "80%",
+        }}
+      >
+        <Form onSubmit={onSubmit}>
+          <Form.Group className="mb-3" controlId="name.ControlInput">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="ex. John Appleseed"
+              value={form.name}
+              onChange={(e) => updateForm({ name: e.target.value })}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="comment.ControlTextarea">
+            <Form.Label>Comment</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={form.comment}
+              onChange={(e) => updateForm({ comment: e.target.value })}
+            />
+          </Form.Group>
+          <Button variant="dark" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Container>
+      <Container
+        style={{
+          marginTop: "2vh",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "80%",
+        }}
+      >
+        {comments.map((data) => (
+          <Card style={{ margin: "5%", padding: "5%" }}>
+            <Card.Title>{data.name}</Card.Title>
+            <Card.Body>{data.comment}</Card.Body>
+
+            <Card.Subtitle>
+              <Button
+                variant="dark"
+                onClick={() => {
+                  deleteComment(data._id);
+                }}
+              >
+                Delete
+              </Button>
+            </Card.Subtitle>
+          </Card>
+        ))}
+      </Container>
     </Container>
   );
 }

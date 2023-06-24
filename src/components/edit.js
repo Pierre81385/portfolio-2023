@@ -24,7 +24,7 @@ export default function Edit() {
       }
 
       const comment = await response.json();
-      if (!record) {
+      if (!comment) {
         window.alert(`Comment with id ${id} not found`);
         navigate("/");
         return;

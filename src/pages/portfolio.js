@@ -1,11 +1,4 @@
-import {
-  Container,
-  Card,
-  Row,
-  Col,
-  Carousel,
-  CarouselItem,
-} from "react-bootstrap";
+import { Row, Card, Col, Button, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import Match from "../assets/match.gif";
 import eComm from "../assets/ecom.gif";
@@ -18,21 +11,21 @@ import ExpressJS from "../assets/logos/expressjs.png";
 import Firebase from "../assets/logos/Firebase_Logo.png";
 import Firestore from "../assets/logos/Firestore.jpg";
 import Flutter from "../assets/logos/flutter.svg";
-//import HTML from "../assets/logos/html5.png";
+import HTML from "../assets/logos/html5.png";
 import Javascript from "../assets/logos/javascript.png";
-//import JSON from "../assets/logos/JSON.png";
+import JSON from "../assets/logos/JSON.png";
 import ReactBoostrap from "../assets/logos/logo.svg";
 import MongoDB from "../assets/logos/mongodb.png";
-//import MySQL from "../assets/logos/mysql-logo.png";
+import MySQL from "../assets/logos/mysql-logo.png";
 import React from "../assets/logos/react.png";
-//import Sequelize from "../assets/logos/sequelize-logo.png";
+import Sequelize from "../assets/logos/sequelize-logo.png";
+import Node from "../assets/logos/node.png";
+import Git from "../assets/logos/github-logo.png";
+import Postman from "../assets/logos/logo.webp";
 
 export default function Portfolio() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const [selected, setSelected] = useState("");
-  const [details, setDetails] = useState("");
-  const [mobile, setMobile] = useState(true);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -44,12 +37,10 @@ export default function Portfolio() {
     return () => {
       window.removeEventListener("resize", updateDimensions);
       if (width > height) {
-        setMobile(false);
       } else {
-        setMobile(true);
       }
     };
-  }, []);
+  }, [height, width]);
 
   const style = {
     container: {
@@ -59,6 +50,7 @@ export default function Portfolio() {
     logos: {
       height: "4vh",
       width: "auto",
+      margin: "1vw",
     },
     carousel: {
       justifyContent: "center",
@@ -74,6 +66,26 @@ export default function Portfolio() {
     },
   };
 
+  const logos = [
+    AWS,
+    Dart,
+    ExpressJS,
+    Firebase,
+    Firestore,
+    Flutter,
+    HTML,
+    Javascript,
+    JSON,
+    React,
+    ReactBoostrap,
+    MongoDB,
+    Sequelize,
+    MySQL,
+    Node,
+    Git,
+    Postman,
+  ];
+
   const projects = [
     {
       gif: Match,
@@ -81,8 +93,8 @@ export default function Portfolio() {
       description:
         "Think 'tinder' for dogs to connect people and their dogs to help them arrange play dates. Built in Flutter/Dart for iOS, and using Firebase as the backend for Auth and storage.  Providing image uploads, location services map view through GoogleMaps, and chat functionality.",
       tech: "Flutter, Dart, iOS, GoogleMaps API, Firebase Auth, Firestore",
-      git: "https://github.com/TJCourey/beerMe-international",
-      site: "https://tjcourey.github.io/beerMe-international/",
+      git: "https://github.com/Pierre81385/matchdotdog",
+      site: "",
       type: "web",
       logos: [Flutter, Dart, Firebase, Firestore],
     },
@@ -138,5 +150,54 @@ export default function Portfolio() {
     ));
   }
 
-  return <Container></Container>;
+  return (
+    <Container
+      style={{
+        width: width,
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        flex: "wrap",
+        overflow: "scroll",
+      }}
+      fluid={true}
+    >
+      <Row>
+        <Col style={{ width: "100%", textAlign: "center" }}>
+          {GenerateLogos(logos)}
+        </Col>
+      </Row>
+      <Row>
+        {projects.map((card) => (
+          <Col
+            sm={12}
+            md={4}
+            style={{ display: "block", justifyContent: "center" }}
+          >
+            <Card
+              style={{
+                flexGrow: 1,
+                margin: ".25vw",
+                padding: ".5vw",
+                width: "100%",
+                //height: "100%",
+                backgroundColor: "black",
+                color: "white",
+              }}
+            >
+              <Card.Title>{card.name}</Card.Title>
+              <Card.Img src={card.gif} style={{ width: "100%" }} alt="gif" />
+              <Button
+                variant="dark"
+                style={{ margin: ".3vw" }}
+                onClick={() => window.open(card.git, "_blank")}
+              >
+                to GitHub Repo
+              </Button>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
 }

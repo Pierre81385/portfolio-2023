@@ -1,26 +1,6 @@
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import LilMe from "../assets/lilme.png";
 import Me from "../assets/me.png";
-import Oliver1 from "../assets/oliver1.jpg";
-import AWS from "../assets/logos/aws.png";
-import Dart from "../assets/logos/dart.svg";
-import ExpressJS from "../assets/logos/expressjs.png";
-import Firebase from "../assets/logos/Firebase_Logo.png";
-import Firestore from "../assets/logos/Firestore.jpg";
-import Flutter from "../assets/logos/flutter.svg";
-import HTML from "../assets/logos/html5.png";
-import Javascript from "../assets/logos/javascript.png";
-import JSON from "../assets/logos/JSON.png";
-import ReactBoostrap from "../assets/logos/logo.svg";
-import MongoDB from "../assets/logos/mongodb.png";
-import MySQL from "../assets/logos/mysql-logo.png";
-import React from "../assets/logos/react.png";
-import Sequelize from "../assets/logos/sequelize-logo.png";
-import Node from "../assets/logos/node.png";
-import Git from "../assets/logos/github-logo.png";
-import iOS from "../assets/logos/iOS.jpg";
-import Postman from "../assets/logos/logo.webp";
 
 export default function About() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -49,6 +29,7 @@ export default function About() {
     },
     card: {
       width: width > height ? "40%" : "90%",
+      borderColor: "white",
     },
     logos: {
       height: "4vh",
@@ -61,49 +42,6 @@ export default function About() {
     },
   };
 
-  const logos = [
-    AWS,
-    Dart,
-    ExpressJS,
-    Firebase,
-    Firestore,
-    Flutter,
-    HTML,
-    Javascript,
-    JSON,
-    React,
-    ReactBoostrap,
-    MongoDB,
-    Sequelize,
-    MySQL,
-    Node,
-    Git,
-    Postman,
-  ];
-
-  function GenerateLogos(data) {
-    return logos.map((asset) => (
-      <img src={asset} style={style.logos} alt="logo"></img>
-    ));
-  }
-
-  const content = [
-    {
-      img: Me,
-      title: "Hey, I'm Peter!",
-      text: "I'm a full stack developer with a passion for learning with unending curiosity that drives me to ask, 'How'd they do that?' on a daily basis. I currently work for ClickUp as a Technical Support Specialist, project basis QA Specialist, and API Subject Matter Expert. When I'm not doing a deep dive feature investigation, you can find me writing postman scripts or exploring various api endpoints to see where they lead!",
-    },
-    {
-      img: LilMe,
-      title: "From a young age...",
-      text: "I was always a nerd at heart, and this consistent interest has carried me from building data processing formulas in spreadsheets, to pulling reports with MySql queries, to building full stack app projects. I graduated from CUNY Baruch College with a BBA in Economics, and after exploring a variety of career paths, I decided to take the plunge in a coding bootcamp with the University of Denver.  Following this I was happy to find new skills in self learning that have propelled me from the MERN stack foundation of the bootcamp curriculum to new skills using Flutter and Dart, Amazon Web Services, and Google Firebase to name a few.",
-    },
-    {
-      img: Oliver1,
-      title: "This is my dog Oliver",
-      text: "How do I tell my dog I need to do this to afford his lavish lifestyle?",
-    },
-  ];
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
@@ -135,13 +73,7 @@ export default function About() {
             <Container style={{ textAlign: "center" }}>
               <h4 style={{ color: "grey" }}>FULL STACK DEVELOPER</h4>
             </Container>
-            <Container
-              style={{ height: ".25vh", backgroundColor: "black" }}
-            ></Container>
-            {GenerateLogos(logos)}
-            <Container
-              style={{ height: ".25vh", backgroundColor: "black" }}
-            ></Container>
+
             <Container style={{ marginTop: "2vh" }}>
               <h5 style={style.quotes}>
                 "Peter is a highly intelligent and motivated person. He is a
