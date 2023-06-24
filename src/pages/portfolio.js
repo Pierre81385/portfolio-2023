@@ -11,17 +11,17 @@ import ExpressJS from "../assets/logos/expressjs.png";
 import Firebase from "../assets/logos/Firebase_Logo.png";
 import Firestore from "../assets/logos/Firestore.jpg";
 import Flutter from "../assets/logos/flutter.svg";
-import HTML from "../assets/logos/html5.png";
+// import HTML from "../assets/logos/html5.png";
 import Javascript from "../assets/logos/javascript.png";
-import JSON from "../assets/logos/JSON.png";
+// import JSON from "../assets/logos/JSON.png";
 import ReactBoostrap from "../assets/logos/logo.svg";
 import MongoDB from "../assets/logos/mongodb.png";
-import MySQL from "../assets/logos/mysql-logo.png";
+// import MySQL from "../assets/logos/mysql-logo.png";
 import React from "../assets/logos/react.png";
-import Sequelize from "../assets/logos/sequelize-logo.png";
-import Node from "../assets/logos/node.png";
-import Git from "../assets/logos/github-logo.png";
-import Postman from "../assets/logos/logo.webp";
+// import Sequelize from "../assets/logos/sequelize-logo.png";
+// import Node from "../assets/logos/node.png";
+// import Git from "../assets/logos/github-logo.png";
+// import Postman from "../assets/logos/logo.webp";
 
 export default function Portfolio() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -66,25 +66,25 @@ export default function Portfolio() {
     },
   };
 
-  const logos = [
-    AWS,
-    Dart,
-    ExpressJS,
-    Firebase,
-    Firestore,
-    Flutter,
-    HTML,
-    Javascript,
-    JSON,
-    React,
-    ReactBoostrap,
-    MongoDB,
-    Sequelize,
-    MySQL,
-    Node,
-    Git,
-    Postman,
-  ];
+  // const logos = [
+  //   AWS,
+  //   Dart,
+  //   ExpressJS,
+  //   Firebase,
+  //   Firestore,
+  //   Flutter,
+  //   HTML,
+  //   Javascript,
+  //   JSON,
+  //   React,
+  //   ReactBoostrap,
+  //   MongoDB,
+  //   Sequelize,
+  //   MySQL,
+  //   Node,
+  //   Git,
+  //   Postman,
+  // ];
 
   const projects = [
     {
