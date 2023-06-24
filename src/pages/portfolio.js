@@ -90,6 +90,7 @@ export default function Portfolio() {
     {
       gif: Match,
       name: "FLUTTER/DART, FIREBASE, GoogleMaps API",
+      role: "sole developer",
       description:
         "Think 'tinder' for dogs to connect people and their dogs to help them arrange play dates. Built in Flutter/Dart for iOS, and using Firebase as the backend for Auth and storage.  Providing image uploads, location services map view through GoogleMaps, and chat functionality.",
       tech: "Flutter, Dart, iOS, GoogleMaps API, Firebase Auth, Firestore",
@@ -101,6 +102,7 @@ export default function Portfolio() {
     {
       gif: POS,
       name: "FLUTTER/DART",
+      role: "sole developer",
       description:
         "This is my first Flutter/Dart application, which I modeled after a point of sale ordering system for use on mobile. Authorization is handled by Firebase Auth, with database services to store user profiles, menu items, and ordering information provided by Firestore. The focus of this project was to work with flutter to create a layout that was generated dynamically from database content.",
       tech: "Flutter, Dart, FirebaseAuth, Firestore",
@@ -112,6 +114,7 @@ export default function Portfolio() {
     {
       gif: Insta,
       name: "REACT/AWS/FIRESTORE",
+      role: "sole developer",
       description:
         "A tester for AWS. Auth services are handled by FirbaseAuth, and user information is stored in a Firestore database. Images are stored in a bucket through AWS S3, and are linked to posts in an AWS DynamoDB database. DynamoDB stores tables for Posts, Comments, Likes, and Replys with each document's creatAt number serving as their unique identifier. Uploading is handled by Mutler. Front end routing is done with React, while backend routing is done through Express. Temporary deployment to EC2 discontinued.",
       tech: "REACT, AWS S3, AWS DynamoDB, EC2, Express, FirbaseAuth, Firebase Firestore HTML, CSS, JAVASCRIPT, Bootstrap, and Mutler",
@@ -123,6 +126,7 @@ export default function Portfolio() {
     {
       gif: NightClub,
       name: "REACT",
+      role: "sole developer",
       description:
         "This site is primarly a demonstrator and experiment in creating a layout with sliding sections of moving content. The result is a night club themed site with 4 sections that each display a different video background with overlayed content. I relied heavily on the creative use of CSS, Bootstrap, and React states to solve a variety of creative challenges. Not mobile friendly, but a visually appealing experiment on desktop environments!",
       tech: "REACT, HTML, CSS, , Javascript, Bootstrap",
@@ -134,6 +138,7 @@ export default function Portfolio() {
     {
       gif: eComm,
       name: "MERN Stack",
+      role: "sole developer",
       description:
         "Scaling-Lamp is a demonstration of an ecommerce site built with React.js, MongoDB, Apollo GraphQL, and JWT. Users can create an account and login, with authenticaion via JWT enabling logged-in users to access the entire site. Logged-in users can go beyond viewing availible products, with the ability to create, update, and delete products, as well as adding products to a purchase cart.",
       tech: "REACT, MongoDB, JWT, GraphQL, ApolloServer-Express, HTML, CSS, JAVASCRIPT, Bootstrap",
@@ -162,13 +167,35 @@ export default function Portfolio() {
       }}
       fluid={true}
     >
-      <Row>
+      {/* <Row>
         <Col style={{ width: "100%", textAlign: "center" }}>
           {GenerateLogos(logos)}
         </Col>
-      </Row>
-      <Row>
-        {projects.map((card) => (
+      </Row> */}
+
+      {projects.map((card) => (
+        <Row>
+          <Col
+            sm={12}
+            md={4}
+            style={{
+              display: "flex",
+              justifyContent: "right",
+              textAlign: "right",
+              marginTop: "auto",
+              marginBottom: "auto",
+            }}
+          >
+            <ul>
+              <li style={{ listStyleType: "none" }}>
+                Project Type: {card.type}
+              </li>
+              <li style={{ listStyleType: "none" }}>Role: {card.role}</li>
+              <li style={{ listStyleType: "none" }}>
+                {GenerateLogos(card.logos)}
+              </li>
+            </ul>
+          </Col>
           <Col
             sm={12}
             md={4}
@@ -196,8 +223,21 @@ export default function Portfolio() {
               </Button>
             </Card>
           </Col>
-        ))}
-      </Row>
+          <Col
+            sm={12}
+            md={4}
+            style={{
+              display: "flex",
+              justifyContent: "left",
+              textAlign: "left",
+              marginTop: "auto",
+              marginBottom: "auto",
+            }}
+          >
+            {card.description}
+          </Col>
+        </Row>
+      ))}
     </Container>
   );
 }

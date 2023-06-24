@@ -21,6 +21,7 @@ export default function Contact() {
   const [hoveringGit, setHoveringGit] = useState("5vh");
   const [hoverPhone, setHoverPhone] = useState("black");
   const [hoverEmail, setHoverEmail] = useState("black");
+  const [refresh, setRefresh] = useState(false);
   const [form, setForm] = useState({
     name: "",
     comment: "",
@@ -44,9 +45,10 @@ export default function Contact() {
     }
 
     getComments();
+    setRefresh(false);
 
     return;
-  }, [comments.length]);
+  }, [comments.length, refresh]);
 
   function updateForm(value) {
     return setForm((prev) => {
@@ -72,6 +74,7 @@ export default function Contact() {
     });
 
     setForm({ name: "", comment: "" });
+    setRefresh(true);
   }
 
   async function deleteComment(id) {
