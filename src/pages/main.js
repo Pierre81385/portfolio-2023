@@ -80,7 +80,7 @@ export default function Main() {
             padding: 0,
           }}
         >
-          portfolio
+          featured projects
         </Button>
         <Button
           variant="link"
