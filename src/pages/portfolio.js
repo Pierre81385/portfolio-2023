@@ -65,7 +65,7 @@ export default function Portfolio() {
     },
     carousel: {
       justifyContent: "center",
-      height: "80vh",
+      height: width <= 576 ? "100%" : "80vh",
       width: "100%",
       marginTop: "2.5vh",
     },
@@ -212,46 +212,56 @@ export default function Portfolio() {
       >
         {projects.map((card) => (
           <CarouselItem>
+            <Row style={{ margin: "auto", textAlign: "center" }}>
+              {GenerateLogos(card.logos)}
+            </Row>
             <Row>
-              <Col
-                style={{ display: "flex", justifyContent: "center" }}
-                className="align-self-center"
-                sm={12}
-                md={6}
+              <Card
+                style={{
+                  flexGrow: 1,
+                  padding: ".5vw",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "white",
+                  borderColor: "white",
+                  color: "white",
+                  marginRight: "auto",
+                  marginLeft: "auto",
+                }}
               >
-                <Card
+                <Card.Img
+                  src={card.gif}
                   style={{
-                    flexGrow: 1,
-                    padding: ".5vw",
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "white",
-                    borderColor: "white",
-                    color: "white",
-                    marginTop: "auto",
-                    marginBottom: "auto",
+                    textAlign: "center",
+                    display: "flex",
+                    margin: "auto",
+                    padding: "auto",
+                    width:
+                      card.type === "Web app" ? height * 0.6 : height * 0.4,
+                    height:
+                      card.type === "Web app" ? height * 0.4 : height * 0.6,
+                    objectFit: "cover",
+                    borderRadius: "10px",
                   }}
+                  alt="gif"
+                />
+                <Button
+                  variant="dark"
+                  style={{
+                    width: "30vw",
+                    marginTop: "1vh",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
+                  onClick={() => window.open(card.git, "_blank")}
                 >
-                  <Card.Img
-                    src={card.gif}
-                    style={{ width: "100%" }}
-                    alt="gif"
-                  />
-                  <Button
-                    variant="dark"
-                    style={{ margin: ".3vw" }}
-                    onClick={() => window.open(card.git, "_blank")}
-                  >
-                    to GitHub Repo
-                  </Button>
-                  <Card.Subtitle></Card.Subtitle>
-                </Card>
-              </Col>
-              <Col sm={12} md={6} className="align-self-center">
-                <Row style={{ fontWeight: "bold" }}>{card.tech}</Row>
-                <Row>{card.description}</Row>
-                <Row>{GenerateLogos(card.logos)}</Row>
-              </Col>
+                  to GitHub Repo
+                </Button>
+              </Card>
+
+              <Row style={{ margin: "auto", textAlign: "center" }}>
+                {card.description}
+              </Row>
             </Row>
           </CarouselItem>
         ))}
