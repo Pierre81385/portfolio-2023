@@ -19,8 +19,8 @@ export default function Contact() {
   const [hoveringLk, setHoveringLk] = useState("5vh");
   const [hoveringInst, setHoveringInst] = useState("5vh");
   const [hoveringGit, setHoveringGit] = useState("5vh");
-  const [hoverPhone, setHoverPhone] = useState("black");
-  const [hoverEmail, setHoverEmail] = useState("black");
+  const [hoverPhone, setHoverPhone] = useState("grey");
+  const [hoverEmail, setHoverEmail] = useState("grey");
   const [refresh, setRefresh] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -124,8 +124,8 @@ export default function Contact() {
             href="mailto: pjb.den@gmail.com"
             variant="link"
             style={style.emailLink}
-            onMouseEnter={() => setHoverEmail("grey")}
-            onMouseLeave={() => setHoverEmail("black")}
+            onMouseEnter={() => setHoverEmail("white")}
+            onMouseLeave={() => setHoverEmail("grey")}
           >
             pjb.den@gmail.com
           </Button>
@@ -135,8 +135,8 @@ export default function Contact() {
             href="tel:7202725223"
             variant="link"
             style={style.phoneLink}
-            onMouseEnter={() => setHoverPhone("grey")}
-            onMouseLeave={() => setHoverPhone("black")}
+            onMouseEnter={() => setHoverPhone("white")}
+            onMouseLeave={() => setHoverPhone("grey")}
           >
             720-272-5223
           </Button>
@@ -235,7 +235,7 @@ export default function Contact() {
       >
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="name.ControlInput">
-            <Form.Label>Name</Form.Label>
+            <Form.Label style={{ color: "white" }}>Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="ex. John Appleseed"
@@ -244,7 +244,7 @@ export default function Contact() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="comment.ControlTextarea">
-            <Form.Label>Comment</Form.Label>
+            <Form.Label style={{ color: "white" }}>Comment</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}

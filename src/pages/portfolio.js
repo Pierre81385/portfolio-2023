@@ -1,7 +1,7 @@
 import {
   Row,
   Card,
-  Col,
+  //Col,
   Button,
   Container,
   Carousel,
@@ -166,13 +166,13 @@ export default function Portfolio() {
     },
   ];
 
-  function GenerateLogos(data) {
-    return data.map((asset) => (
-      <Col className="Col-1">
-        <img src={asset} style={style.logos} alt="logo" fluid></img>
-      </Col>
-    ));
-  }
+  // function GenerateLogos(data) {
+  //   return data.map((asset) => (
+  //     <Col className="Col-1">
+  //       <img src={asset} style={style.logos} alt="logo" fluid></img>
+  //     </Col>
+  //   ));
+  // }
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -190,7 +190,7 @@ export default function Portfolio() {
             }}
             style={{
               textDecoration: index === link.position ? "underline" : "none",
-              color: index === link.index ? "black" : "grey",
+              color: index === link.position ? "white" : "grey",
               textAlign: "center",
               margin: "5px",
               padding: 0,
@@ -212,9 +212,9 @@ export default function Portfolio() {
       >
         {projects.map((card) => (
           <CarouselItem>
-            <Row style={{ margin: "auto", textAlign: "center" }}>
+            {/* <Row style={{ margin: "auto", textAlign: "center" }}>
               {GenerateLogos(card.logos)}
-            </Row>
+            </Row> */}
             <Row>
               <Card
                 style={{
@@ -222,7 +222,7 @@ export default function Portfolio() {
                   padding: ".5vw",
                   width: "100%",
                   height: "100%",
-                  backgroundColor: "white",
+                  backgroundColor: "black",
                   borderColor: "white",
                   color: "white",
                   marginRight: "auto",
@@ -246,12 +246,13 @@ export default function Portfolio() {
                   alt="gif"
                 />
                 <Button
-                  variant="dark"
+                  variant="link"
                   style={{
                     width: "30vw",
                     marginTop: "1vh",
                     marginLeft: "auto",
                     marginRight: "auto",
+                    color: "white",
                   }}
                   onClick={() => window.open(card.git, "_blank")}
                 >
@@ -259,7 +260,9 @@ export default function Portfolio() {
                 </Button>
               </Card>
 
-              <Row style={{ margin: "auto", textAlign: "center" }}>
+              <Row
+                style={{ margin: "auto", textAlign: "center", color: "white" }}
+              >
                 {card.description}
               </Row>
             </Row>

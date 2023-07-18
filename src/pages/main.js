@@ -47,7 +47,12 @@ export default function Main() {
     <Container
       id="main"
       fluid={true}
-      style={{ margin: "0", padding: "0", width: "100vw" }}
+      style={{
+        margin: "0",
+        padding: "0",
+        width: "100vw",
+        backgroundColor: "black",
+      }}
     >
       <Nav className="me-auto" style={style.nav}>
         <Button
@@ -58,7 +63,7 @@ export default function Main() {
           }}
           style={{
             textDecoration: index === 0 ? "underline" : "none",
-            color: index === 0 ? "black" : "grey",
+            color: index === 0 ? "white" : "grey",
             textAlign: "center",
             margin: "5px",
             padding: 0,
@@ -74,7 +79,7 @@ export default function Main() {
           }}
           style={{
             textDecoration: index === 1 ? "underline" : "none",
-            color: index === 1 ? "black" : "grey",
+            color: index === 1 ? "white" : "grey",
             textAlign: "center",
             margin: "5px",
             padding: 0,
@@ -90,7 +95,7 @@ export default function Main() {
           }}
           style={{
             textDecoration: index === 2 ? "underline" : "none",
-            color: index === 2 ? "black" : "grey",
+            color: index === 2 ? "white" : "grey",
             textAlign: "center",
             margin: "5px",
             padding: 0,
